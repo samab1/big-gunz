@@ -128,6 +128,23 @@
     font-weight: 800;
   }
 
+  .move { display: none; flex: 0 0 36px; flex-direction: column; gap: 6px; }
+  .move button {
+    width: 36px; height: 32px;
+    border: 1px solid var(--card-2);
+    border-radius: 8px;
+    background: var(--card-2);
+    color: var(--text);
+    font-size: 0.85rem;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .move button:active { border-color: var(--accent); }
+  body.reordering .move { display: flex; }
+  body.reordering .check { display: none; }
+  body.reordering .card-head { cursor: default; }
+  .btn-group { display: flex; gap: 8px; }
+
   .video-wrap { display: none; padding: 0 14px 14px; }
   .card.open .video-wrap { display: block; }
   .video-box {
@@ -200,7 +217,11 @@
 
 <div class="progress-row">
   <span class="count" id="progress"></span>
-  <button class="uncheck-btn" id="uncheck" onclick="uncheckAll()">Uncheck all</button>
+  <span class="btn-group">
+    <button class="uncheck-btn" id="reset-order" onclick="resetOrder()" style="display:none">Reset order</button>
+    <button class="uncheck-btn" id="reorder" onclick="toggleReorder()">Reorder</button>
+    <button class="uncheck-btn" id="uncheck" onclick="uncheckAll()">Uncheck all</button>
+  </span>
 </div>
 
 <div id="exercises"></div>
@@ -341,6 +362,41 @@ const DAY_NOTES = {
 };
 
 let currentDay = "A";
+let reorderMode = false;
+
+function getOrder(day) {
+  try { return JSON.parse(localStorage.getItem("bigGunzOrder" + day)) || null; }
+  catch { return null; }
+}
+function orderedExercises(day) {
+  const saved = getOrder(day);
+  const list = EXERCISES[day].slice();
+  if (!saved) return list;
+  list.sort((a, b) => {
+    const ia = saved.indexOf(a.name), ib = saved.indexOf(b.name);
+    return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib);
+  });
+  return list;
+}
+function moveEx(name, dir) {
+  const names = orderedExercises(currentDay).map(e => e.name);
+  const i = names.indexOf(name);
+  const j = i + dir;
+  if (j < 0 || j >= names.length) return;
+  [names[i], names[j]] = [names[j], names[i]];
+  localStorage.setItem("bigGunzOrder" + currentDay, JSON.stringify(names));
+  setDay(currentDay);
+}
+function toggleReorder() {
+  reorderMode = !reorderMode;
+  document.body.classList.toggle("reordering", reorderMode);
+  document.getElementById("reorder").textContent = reorderMode ? "✓ Done" : "Reorder";
+  updateProgress();
+}
+function resetOrder() {
+  localStorage.removeItem("bigGunzOrder" + currentDay);
+  setDay(currentDay);
+}
 
 function doneList(day) {
   try { return JSON.parse(localStorage.getItem("bigGunzDone" + day)) || []; }
@@ -360,7 +416,7 @@ function setDay(day) {
   const done = doneList(day);
   const container = document.getElementById("exercises");
   container.innerHTML = "";
-  EXERCISES[day].forEach(ex => {
+  orderedExercises(day).forEach(ex => {
     const card = document.createElement("div");
     card.className = "card" + (done.includes(ex.name) ? " done" : "");
     card.dataset.name = ex.name;
@@ -372,6 +428,10 @@ function setDay(day) {
           "<div class='meta'>" + ex.meta + "</div>" +
           "<div class='cue'>" + ex.cue + "</div>" +
         "</div>" +
+        "<div class='move'>" +
+          "<button aria-label='Move up'>▲</button>" +
+          "<button aria-label='Move down'>▼</button>" +
+        "</div>" +
         "<button class='check' aria-label='Mark done'>✓</button>" +
       "</div>" +
       "<div class='video-wrap'>" +
@@ -380,11 +440,16 @@ function setDay(day) {
         "<div class='detail why'><span class='label'>WHY IT'S HERE</span>" + ex.why + "</div>" +
         "<div class='detail grow'><span class='label'>FOR GROWTH</span>" + ex.grow + "</div>" +
       "</div>";
-    card.querySelector(".card-head").addEventListener("click", () => toggleCard(card));
+    card.querySelector(".card-head").addEventListener("click", () => {
+      if (!reorderMode) toggleCard(card);
+    });
     card.querySelector(".check").addEventListener("click", (e) => {
       e.stopPropagation();
       toggleDone(card, ex.name);
     });
+    const [up, down] = card.querySelectorAll(".move button");
+    up.addEventListener("click", (e) => { e.stopPropagation(); moveEx(ex.name, -1); });
+    down.addEventListener("click", (e) => { e.stopPropagation(); moveEx(ex.name, 1); });
     container.appendChild(card);
   });
   updateProgress();
@@ -416,7 +481,8 @@ function updateProgress() {
     el.textContent = n + " of " + total + " done";
     el.classList.remove("all-done");
   }
-  document.getElementById("uncheck").style.visibility = n > 0 ? "visible" : "hidden";
+  document.getElementById("uncheck").style.display = (!reorderMode && n > 0) ? "" : "none";
+  document.getElementById("reset-order").style.display = reorderMode ? "" : "none";
 }
 
 function toggleCard(card) {
