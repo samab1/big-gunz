@@ -51,16 +51,38 @@
     padding: 12px 14px;
     font-size: 0.85rem;
     color: var(--muted);
-    margin-bottom: 14px;
-    line-height: 1.45;
+    margin-bottom: 12px;
+    line-height: 1.5;
   }
   .day-note b { color: var(--accent-2); }
+
+  .progress-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4px;
+    margin-bottom: 10px;
+    min-height: 30px;
+  }
+  .progress-row .count { color: var(--muted); font-size: 0.85rem; font-weight: 600; }
+  .progress-row .count.all-done { color: var(--accent-2); }
+  .uncheck-btn {
+    background: none;
+    border: 1px solid var(--card-2);
+    color: var(--muted);
+    font-size: 0.78rem;
+    padding: 6px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+  .uncheck-btn:active { color: var(--text); border-color: var(--muted); }
 
   .card {
     background: var(--card);
     border-radius: var(--radius);
     margin-bottom: 12px;
     overflow: hidden;
+    transition: opacity 0.2s;
   }
   .card-head {
     display: flex;
@@ -82,13 +104,29 @@
   .info h3 { font-size: 1rem; }
   .info .meta { color: var(--accent-2); font-size: 0.85rem; font-weight: 600; margin-top: 2px; }
   .info .cue { color: var(--muted); font-size: 0.78rem; margin-top: 3px; line-height: 1.35; }
-  .play-hint {
-    flex: 0 0 auto;
-    color: var(--muted);
-    font-size: 1.4rem;
-    transition: transform 0.2s;
+
+  .card.done .icon, .card.done .info { opacity: 0.45; }
+  .card.done .info h3 { text-decoration: line-through; text-decoration-thickness: 2px; }
+
+  .check {
+    flex: 0 0 34px;
+    width: 34px; height: 34px;
+    border: 2px solid var(--muted);
+    border-radius: 50%;
+    background: none;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: transparent;
+    font-size: 1.1rem;
+    -webkit-tap-highlight-color: transparent;
+    transition: all 0.15s;
   }
-  .card.open .play-hint { transform: rotate(90deg); color: var(--accent); }
+  .card.done .check {
+    background: var(--accent-2);
+    border-color: var(--accent-2);
+    color: #0f1115;
+    font-weight: 800;
+  }
 
   .video-wrap { display: none; padding: 0 14px 14px; }
   .card.open .video-wrap { display: block; }
@@ -103,12 +141,32 @@
   .video-box iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
   .yt-link {
     display: inline-block;
-    margin-top: 8px;
+    margin-top: 6px;
     color: var(--muted);
     font-size: 0.75rem;
     text-decoration: none;
   }
   .yt-link:hover { color: var(--accent); }
+
+  .detail {
+    margin-top: 10px;
+    padding: 10px 12px;
+    background: var(--card-2);
+    border-radius: 10px;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+  .detail + .detail { margin-top: 8px; }
+  .detail .label {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+  }
+  .detail.why .label { color: var(--accent-2); }
+  .detail.grow .label { color: var(--accent); }
 
   .coach {
     background: var(--card);
@@ -123,6 +181,7 @@
   .coach ul { margin-left: 18px; }
   .coach li { margin-bottom: 6px; }
   .coach b { color: var(--accent); }
+  .coach p { margin-bottom: 10px; }
 </style>
 </head>
 <body>
@@ -139,13 +198,20 @@
 
 <div class="day-note" id="day-note"></div>
 
+<div class="progress-row">
+  <span class="count" id="progress"></span>
+  <button class="uncheck-btn" id="uncheck" onclick="uncheckAll()">Uncheck all</button>
+</div>
+
 <div id="exercises"></div>
 
 <div class="coach">
   <h2>🧠 Coach's rules</h2>
+  <p><b>Why A / B?</b> Day A is every muscle that <i>pushes</i> (chest, shoulders, triceps) plus legs. Day B is every muscle that <i>pulls</i> (back, biceps) plus the whole back side of your body. Alternating them means every muscle gets hit ~3 times per 2 weeks with a full rest day in between — the sweet spot for growing without beating yourself up. Big moves come first in each day, while you're fresh.</p>
   <ul>
     <li><b>Warm up first:</b> 2–3 min — arm circles, 10 bodyweight squats, a few light halos, short dead hang.</li>
     <li><b>Go heavier when it's easy:</b> if you finish every set with good form and 2+ reps still "in the tank", move up in weight next session. That's how you get bigger.</li>
+    <li><b>Lower the weight slowly.</b> The way down (2–3 seconds) builds more muscle than the way up. This is the single best growth habit.</li>
     <li><b>Rest between sets:</b> ~90 sec on the big moves (squat, press, deadlift, row), ~60 sec on curls, flys, shrugs, halos.</li>
     <li><b>Form beats weight.</b> If form breaks, the set is over. Watch the video again whenever unsure.</li>
     <li><b>Eat &amp; sleep:</b> protein with every meal and 7–8 h sleep — that's where the muscle is actually built.</li>
@@ -160,6 +226,8 @@ const EXERCISES = {
       name: "Goblet Squat",
       meta: "3 × 10 · kettlebell 16 → 20 kg",
       cue: "Hold the bell at your chest, sit down between your heels, chest up.",
+      why: "Works your quads, glutes and core — the biggest muscles you own. Heavy leg work releases the strongest whole-body growth signal there is, and the goblet version keeps your torso upright so it's very hard to hurt your back. Skipping legs is the #1 reason upper-body progress stalls.",
+      grow: "Go deep — elbows should brush the inside of your knees at the bottom. Heels stay glued down. Take 2–3 seconds on the way down, then stand up by squeezing your glutes hard.",
       video: "MxsFDhcyFyE",
       icon: "<svg viewBox='0 0 64 64'><circle cx='32' cy='12' r='5'/><path d='M32 17 v10'/><path d='M24 23 h16'/><rect x='28' y='25' width='8' height='8' rx='2'/><path d='M32 33 l-8 10 v9'/><path d='M32 33 l8 10 v9'/></svg>"
     },
@@ -167,6 +235,8 @@ const EXERCISES = {
       name: "Incline Dumbbell Press",
       meta: "3 × 8–10 · dumbbells",
       cue: "Bench at ~30°. Press up and slightly back, lower slow. Main chest builder.",
+      why: "Your #1 chest-size exercise. The incline angle targets the upper chest and front shoulders — the part that fills out a t-shirt and makes you look bigger from every angle. Flys alone can't do this; pressing heavy is what grows the chest.",
+      grow: "Keep elbows at ~45° from your body, not flared straight out — that protects your shoulders. Lower slowly until you feel a stretch across the chest, never bounce at the bottom. This is your main 'go heavier over time' lift.",
       video: "hChjZQhX1Ls",
       icon: "<svg viewBox='0 0 64 64'><path d='M8 50 L44 30'/><circle cx='40' cy='26' r='5'/><path d='M36 36 l4 -16'/><path d='M38 28 l8 -14'/><rect x='42' y='8' width='10' height='5' rx='2'/></svg>"
     },
@@ -174,6 +244,8 @@ const EXERCISES = {
       name: "Kettlebell Clean & Press",
       meta: "3 × 6 per side · 16 kg (20 kg last set if solid)",
       cue: "Clean the bell to your shoulder, then press it overhead. One smooth move.",
+      why: "Builds shoulders, traps and full-body strength in one move. Pressing overhead is the fastest way to wider-looking shoulders, and the one-arm version forces your core to work hard too. This is classic Pavel-style kettlebell training.",
+      grow: "Clean smoothly so the bell rolls onto your forearm — it should never bang your wrist. Brace your abs and squeeze your glutes before pressing; don't lean back to finish a rep. If you lean, the weight is too heavy today.",
       video: "km3f8_rpDdg",
       icon: "<svg viewBox='0 0 64 64'><circle cx='30' cy='16' r='5'/><path d='M30 21 v18'/><path d='M30 39 l-6 14'/><path d='M30 39 l6 14'/><path d='M30 25 l12 -10'/><circle cx='44' cy='10' r='4'/></svg>"
     },
@@ -181,6 +253,8 @@ const EXERCISES = {
       name: "Incline Dumbbell Fly",
       meta: "2 × 10–12 · light dumbbells",
       cue: "Big hug motion, slight bend in elbows, feel the stretch — don't go heavy.",
+      why: "The finisher for your chest. Loading a muscle in its stretched position is one of the strongest growth signals known — the fly stretches the chest in a way pressing can't. It also pumps blood into the muscle after the heavy work.",
+      grow: "This is the one exercise where light weight wins. Stop where you feel a good stretch — forcing deeper is how people tweak shoulders. Think 'hugging a tree', squeeze the chest as your hands come together.",
       video: "bDaIL_zKbGs",
       icon: "<svg viewBox='0 0 64 64'><path d='M10 48 L46 32'/><circle cx='42' cy='28' r='5'/><path d='M38 36 l-14 -12'/><path d='M40 34 l16 -8'/><circle cx='22' cy='22' r='3'/><circle cx='58' cy='24' r='3'/></svg>"
     },
@@ -188,6 +262,8 @@ const EXERCISES = {
       name: "Kettlebell Halo",
       meta: "2 × 8 per direction · 16 kg",
       cue: "Circle the bell slowly around your head. Ribs down, don't arch the back.",
+      why: "Your insurance policy. Halos build shoulder mobility and small stabilizer muscles, which is what lets you keep pressing heavier for years without pain. Healthy shoulders are the difference between progressing and being stuck injured.",
+      grow: "Slow and controlled is the whole point — this is not a strength contest. Stand tall, keep your ribs down (don't arch), and make the circles tight around your head. If 16 kg feels sloppy, it's fine to go lighter.",
       video: "XzqwVP_wSpc",
       icon: "<svg viewBox='0 0 64 64'><circle cx='32' cy='22' r='5'/><ellipse cx='32' cy='14' rx='16' ry='6'/><path d='M32 27 v14'/><path d='M32 41 l-7 12'/><path d='M32 41 l7 12'/></svg>"
     },
@@ -195,6 +271,8 @@ const EXERCISES = {
       name: "Dead Hang (finisher)",
       meta: "2 × as long as you can",
       cue: "Just hang. Builds grip and opens the shoulders. Breathe.",
+      why: "Grip strength decides how heavy you can row, deadlift and shrug — train it and everything else goes up. Hanging also decompresses your spine and stretches the lats and shoulders after the workout. It's step one toward pull-ups.",
+      grow: "Relax into it and breathe. Time yourself and try to beat last session by a few seconds — that's your progression. When you can hang 60+ seconds easily, tell me and we'll add pull-up steps.",
       video: "Nc-JGSZZMAQ",
       icon: "<svg viewBox='0 0 64 64'><path d='M10 8 h44'/><path d='M22 8 v6'/><path d='M42 8 v6'/><circle cx='32' cy='22' r='5'/><path d='M22 14 l10 13'/><path d='M42 14 l-10 13'/><path d='M32 27 v16'/><path d='M32 43 l-5 12'/><path d='M32 43 l5 12'/></svg>"
     }
@@ -204,6 +282,8 @@ const EXERCISES = {
       name: "Kettlebell Deadlift",
       meta: "3 × 10 · 20 kg",
       cue: "Hinge at the hips, flat back, push the floor away. Foundation move.",
+      why: "Trains the hip hinge — glutes, hamstrings and lower back, the most powerful muscles in your body. It's also the safety school for your spine: learning to hinge properly here is what protects your back in the swing and in daily life.",
+      grow: "Push your hips back like you're closing a car door with your butt, back flat, bell close to your shins. Stand up by squeezing your glutes — don't lean back at the top. You should feel hamstrings, never your lower back.",
       video: "MJPGkNqAXzg",
       icon: "<svg viewBox='0 0 64 64'><circle cx='24' cy='18' r='5'/><path d='M27 22 L40 34'/><path d='M40 34 v18'/><path d='M40 52 h-4'/><path d='M30 26 l4 16'/><circle cx='35' cy='46' r='5'/></svg>"
     },
@@ -211,6 +291,8 @@ const EXERCISES = {
       name: "One-Arm Dumbbell Row",
       meta: "3 × 10 per side · dumbbell",
       cue: "Hand on the bench, pull the weight to your hip. THE back builder you were missing.",
+      why: "The most important addition to your program. Your lats and mid-back are the biggest upper-body muscles — they create the V-shape that actually makes you look big. Rowing also balances all your pressing and fixes the rounded-shoulder posture pressing causes.",
+      grow: "Pull your elbow toward your hip, not your hand to your shoulder. Squeeze the shoulder blade back for one second at the top, then lower slowly to a full stretch. No twisting or jerking — if you have to heave it, it's too heavy.",
       video: "tLnlWj7LQ34",
       icon: "<svg viewBox='0 0 64 64'><path d='M8 44 h22'/><path d='M10 44 v10'/><path d='M28 44 v10'/><circle cx='40' cy='18' r='5'/><path d='M37 22 L20 38'/><path d='M40 30 v6'/><rect x='34' y='36' width='12' height='5' rx='2'/><path d='M44 23 l8 16 v14'/></svg>"
     },
@@ -218,6 +300,8 @@ const EXERCISES = {
       name: "Kettlebell Swing",
       meta: "3 × 12 · 16 kg",
       cue: "It's a hip snap, not an arm lift. Power from the glutes — Pavel/Rogan's favorite.",
+      why: "The famous one. Explosive hip power builds glutes and hamstrings, hardens your core, and gets your heart rate up — strength and conditioning in one move. It's the exercise Pavel Tsatsouline built his whole system around.",
+      grow: "Your arms are just ropes — all power comes from snapping the hips forward. Chest height is high enough. Squeeze your glutes hard and stand tall at the top of every rep. If your lower back burns instead of your glutes, stop and re-watch the video.",
       video: "yHxcTn1UeAc",
       icon: "<svg viewBox='0 0 64 64'><circle cx='26' cy='14' r='5'/><path d='M26 19 l4 16'/><path d='M30 35 l-8 8 v10'/><path d='M30 35 l4 10 v8'/><path d='M28 24 l18 8'/><circle cx='50' cy='34' r='5'/></svg>"
     },
@@ -225,6 +309,8 @@ const EXERCISES = {
       name: "Alternating Dumbbell Curl",
       meta: "3 × 12 per arm · dumbbells",
       cue: "Elbows pinned to your sides, no swinging. Squeeze at the top.",
+      why: "Direct biceps work = bigger arms, simple as that. Strong biceps also help every pulling exercise. It's called Big Gunz for a reason.",
+      grow: "The growth is in the lowering: take 2–3 seconds down on every rep. Elbows stay pinned to your sides, no hip swing to cheat the weight up. Full range — all the way down, squeeze hard at the top.",
       video: "sAq_ocpRh_I",
       icon: "<svg viewBox='0 0 64 64'><circle cx='32' cy='12' r='5'/><path d='M32 17 v22'/><path d='M32 39 l-6 14'/><path d='M32 39 l6 14'/><path d='M32 22 l-10 6 l2 -12'/><circle cx='25' cy='14' r='3'/><path d='M32 22 l10 6 v10'/><circle cx='42' cy='40' r='3'/></svg>"
     },
@@ -232,6 +318,8 @@ const EXERCISES = {
       name: "Dumbbell Shrug",
       meta: "3 × 12 · heavy dumbbells",
       cue: "Straight arms, shoulders up to your ears, hold 1 sec, down slow.",
+      why: "Traps are the muscle between your neck and shoulders — they grow fast and they're visible in everything you wear. Together with the rows they give you that thick upper-back look.",
+      grow: "Straight up and straight down — don't roll your shoulders, that does nothing and annoys the joint. Pause one full second at the top, lower slow. This one can go heavy, it's a simple movement.",
       video: "xDt6qbKgLkY",
       icon: "<svg viewBox='0 0 64 64'><circle cx='32' cy='14' r='5'/><path d='M32 19 v20'/><path d='M32 39 l-6 14'/><path d='M32 39 l6 14'/><path d='M32 23 l-9 4 v12'/><path d='M32 23 l9 4 v12'/><path d='M18 18 l4 -5 M46 18 l-4 -5'/></svg>"
     },
@@ -239,6 +327,8 @@ const EXERCISES = {
       name: "Dead Hang (finisher)",
       meta: "2 × as long as you can",
       cue: "Same as Day A. Try to beat your last time.",
+      why: "Grip strength decides how heavy you can row, deadlift and shrug — train it and everything else goes up. Hanging also decompresses your spine and stretches the lats and shoulders after the workout. It's step one toward pull-ups.",
+      grow: "Relax into it and breathe. Time yourself and try to beat last session by a few seconds — that's your progression. When you can hang 60+ seconds easily, tell me and we'll add pull-up steps.",
       video: "Nc-JGSZZMAQ",
       icon: "<svg viewBox='0 0 64 64'><path d='M10 8 h44'/><path d='M22 8 v6'/><path d='M42 8 v6'/><circle cx='32' cy='22' r='5'/><path d='M22 14 l10 13'/><path d='M42 14 l-10 13'/><path d='M32 27 v16'/><path d='M32 43 l-5 12'/><path d='M32 43 l5 12'/></svg>"
     }
@@ -246,21 +336,34 @@ const EXERCISES = {
 };
 
 const DAY_NOTES = {
-  A: "<b>Day A — Push &amp; Squat.</b> Chest, shoulders and legs. Start with squats while you're fresh, then press. Halos at the end keep your shoulders healthy.",
-  B: "<b>Day B — Pull &amp; Hinge.</b> Back, biceps and the whole back side of your body. This is the half your old program was missing — it balances all that pushing."
+  A: "<b>Day A — Push &amp; Squat.</b> Everything that pushes weight away from you: chest, shoulders and triceps — plus legs, because heavy leg work makes your whole body grow. Squats come first while you're fresh, then the presses, then the lighter finishing work.",
+  B: "<b>Day B — Pull &amp; Hinge.</b> Everything that pulls: back and biceps, plus glutes and hamstrings. This is the half your old program was missing — it builds the V-shape, balances all the pressing from Day A, and keeps your shoulders and posture healthy."
 };
 
+let currentDay = "A";
+
+function doneList(day) {
+  try { return JSON.parse(localStorage.getItem("bigGunzDone" + day)) || []; }
+  catch { return []; }
+}
+function saveDone(day, list) {
+  localStorage.setItem("bigGunzDone" + day, JSON.stringify(list));
+}
+
 function setDay(day) {
+  currentDay = day;
   localStorage.setItem("bigGunzDay", day);
   document.getElementById("tab-a").classList.toggle("active", day === "A");
   document.getElementById("tab-b").classList.toggle("active", day === "B");
   document.getElementById("day-note").innerHTML = DAY_NOTES[day];
 
+  const done = doneList(day);
   const container = document.getElementById("exercises");
   container.innerHTML = "";
   EXERCISES[day].forEach(ex => {
     const card = document.createElement("div");
-    card.className = "card";
+    card.className = "card" + (done.includes(ex.name) ? " done" : "");
+    card.dataset.name = ex.name;
     card.innerHTML =
       "<div class='card-head'>" +
         "<div class='icon'>" + ex.icon + "</div>" +
@@ -269,15 +372,51 @@ function setDay(day) {
           "<div class='meta'>" + ex.meta + "</div>" +
           "<div class='cue'>" + ex.cue + "</div>" +
         "</div>" +
-        "<div class='play-hint'>▸</div>" +
+        "<button class='check' aria-label='Mark done'>✓</button>" +
       "</div>" +
       "<div class='video-wrap'>" +
         "<div class='video-box' data-video='" + ex.video + "'></div>" +
         "<a class='yt-link' href='https://www.youtube.com/watch?v=" + ex.video + "' target='_blank' rel='noopener'>Open on YouTube ↗</a>" +
+        "<div class='detail why'><span class='label'>WHY IT'S HERE</span>" + ex.why + "</div>" +
+        "<div class='detail grow'><span class='label'>FOR GROWTH</span>" + ex.grow + "</div>" +
       "</div>";
     card.querySelector(".card-head").addEventListener("click", () => toggleCard(card));
+    card.querySelector(".check").addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggleDone(card, ex.name);
+    });
     container.appendChild(card);
   });
+  updateProgress();
+}
+
+function toggleDone(card, name) {
+  let done = doneList(currentDay);
+  if (done.includes(name)) done = done.filter(n => n !== name);
+  else done.push(name);
+  saveDone(currentDay, done);
+  card.classList.toggle("done", done.includes(name));
+  updateProgress();
+}
+
+function uncheckAll() {
+  saveDone(currentDay, []);
+  document.querySelectorAll(".card").forEach(c => c.classList.remove("done"));
+  updateProgress();
+}
+
+function updateProgress() {
+  const total = EXERCISES[currentDay].length;
+  const n = doneList(currentDay).length;
+  const el = document.getElementById("progress");
+  if (n === total) {
+    el.textContent = "All done — go eat protein 💪";
+    el.classList.add("all-done");
+  } else {
+    el.textContent = n + " of " + total + " done";
+    el.classList.remove("all-done");
+  }
+  document.getElementById("uncheck").style.visibility = n > 0 ? "visible" : "hidden";
 }
 
 function toggleCard(card) {
