@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Big Gunz 💪</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --card: #1a1d24;
+    --card-2: #22262f;
+    --text: #f0f2f5;
+    --muted: #9aa3b2;
+    --accent: #ffb84d;
+    --accent-2: #4dd0a0;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 16px 14px 60px;
+  }
+  header { text-align: center; margin-bottom: 14px; }
+  header h1 { font-size: 1.7rem; letter-spacing: 0.5px; }
+  header p { color: var(--muted); font-size: 0.85rem; margin-top: 4px; }
+
+  .tabs { display: flex; gap: 10px; margin: 16px 0 6px; }
+  .tab {
+    flex: 1;
+    padding: 14px 8px;
+    border: 2px solid var(--card-2);
+    border-radius: var(--radius);
+    background: var(--card);
+    color: var(--muted);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.15s;
+  }
+  .tab small { display: block; font-weight: 400; font-size: 0.72rem; margin-top: 3px; }
+  .tab.active { border-color: var(--accent); color: var(--text); background: var(--card-2); }
+
+  .day-note {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 14px;
+    line-height: 1.45;
+  }
+  .day-note b { color: var(--accent-2); }
+
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .card-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .icon {
+    flex: 0 0 52px;
+    width: 52px; height: 52px;
+    background: var(--card-2);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .icon svg { width: 40px; height: 40px; stroke: var(--accent); fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+  .info { flex: 1; min-width: 0; }
+  .info h3 { font-size: 1rem; }
+  .info .meta { color: var(--accent-2); font-size: 0.85rem; font-weight: 600; margin-top: 2px; }
+  .info .cue { color: var(--muted); font-size: 0.78rem; margin-top: 3px; line-height: 1.35; }
+  .play-hint {
+    flex: 0 0 auto;
+    color: var(--muted);
+    font-size: 1.4rem;
+    transition: transform 0.2s;
+  }
+  .card.open .play-hint { transform: rotate(90deg); color: var(--accent); }
+
+  .video-wrap { display: none; padding: 0 14px 14px; }
+  .card.open .video-wrap { display: block; }
+  .video-box {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #000;
+  }
+  .video-box iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .yt-link {
+    display: inline-block;
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 0.75rem;
+    text-decoration: none;
+  }
+  .yt-link:hover { color: var(--accent); }
+
+  .coach {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 14px;
+    margin-top: 22px;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+  .coach h2 { color: var(--text); font-size: 1rem; margin-bottom: 8px; }
+  .coach ul { margin-left: 18px; }
+  .coach li { margin-bottom: 6px; }
+  .coach b { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>BIG GUNZ 💪</h1>
+  <p>3 days a week · alternate A and B · e.g. Mon / Wed / Fri</p>
+</header>
+
+<div class="tabs">
+  <button class="tab" id="tab-a" onclick="setDay('A')">DAY A<small>Push &amp; Squat</small></button>
+  <button class="tab" id="tab-b" onclick="setDay('B')">DAY B<small>Pull &amp; Hinge</small></button>
+</div>
+
+<div class="day-note" id="day-note"></div>
+
+<div id="exercises"></div>
+
+<div class="coach">
+  <h2>🧠 Coach's rules</h2>
+  <ul>
+    <li><b>Warm up first:</b> 2–3 min — arm circles, 10 bodyweight squats, a few light halos, short dead hang.</li>
+    <li><b>Go heavier when it's easy:</b> if you finish every set with good form and 2+ reps still "in the tank", move up in weight next session. That's how you get bigger.</li>
+    <li><b>Rest between sets:</b> ~90 sec on the big moves (squat, press, deadlift, row), ~60 sec on curls, flys, shrugs, halos.</li>
+    <li><b>Form beats weight.</b> If form breaks, the set is over. Watch the video again whenever unsure.</li>
+    <li><b>Eat &amp; sleep:</b> protein with every meal and 7–8 h sleep — that's where the muscle is actually built.</li>
+    <li><b>Never two days in a row.</b> Rest days are part of the program.</li>
+  </ul>
+</div>
+
+<script>
+const EXERCISES = {
+  A: [
+    {
+      name: "Goblet Squat",
+      meta: "3 × 10 · kettlebell 16 → 20 kg",
+      cue: "Hold the bell at your chest, sit down between your heels, chest up.",
+      video: "MxsFDhcyFyE",
+      icon: "<svg viewBox='0 0 64 64'><circle cx='32' cy='12' r='5'/><path d='M32 17 v10'/><path d='M24 23 h16'/><rect x='28' y='25' width='8' height='8' rx='2'/><path d='M32 33 l-8 10 v9'/><path d='M32 33 l8 10 v9'/></svg>"
+    },
+    {
+      name: "Incline Dumbbell Press",
+      meta: "3 × 8–10 · dumbbells",
+      cue: "Bench at ~30°. Press up and slightly back, lower slow. Main chest builder.",
+      video: "hChjZQhX1Ls",
+      icon: "<svg viewBox='0 0 64 64'><path d='M8 50 L44 30'/><circle cx='40' cy='26' r='5'/><path d='M36 36 l4 -16'/><path d='M38 28 l8 -14'/><rect x='42' y='8' width='10' height='5' rx='2'/></svg>"
+    },
+    {
+      name: "Kettlebell Clean & Press",
+      meta: "3 × 6 per side · 16 kg (20 kg last set if solid)",
+      cue: "Clean the bell to your shoulder, then press it overhead. One smooth move.",
+      video: "km3f8_rpDdg",
+      icon: "<svg viewBox='0 0 64 64'><circle cx='30' cy='16' r='5'/><path d='M30 21 v18'/><path d='M30 39 l-6 14'/><path d='M30 39 l6 14'/><path d='M30 25 l12 -10'/><circle cx='44' cy='10' r='4'/></svg>"
+    },
+    {
+      name: "Incline Dumbbell Fly",
+      meta: "2 × 10–12 · light dumbbells",
+      cue: "Big hug motion, slight bend in elbows, feel the stretch — don't go heavy.",
+      video: "bDaIL_zKbGs",
+      icon: "<svg viewBox='0 0 64 64'><path d='M10 48 L46 32'/><circle cx='42' cy='28' r='5'/><path d='M38 36 l-14 -12'/><path d='M40 34 l16 -8'/><circle cx='22' cy='22' r='3'/><circle cx='58' cy='24' r='3'/></svg>"
+    },
+    {
+      name: "Kettlebell Halo",
+      meta: "2 × 8 per direction · 16 kg",
+      cue: "Circle the bell slowly around your head. Ribs down, don't arch the back.",
+      video: "XzqwVP_wSpc",
+      icon: "<svg viewBox='0 0 64 64'><circle cx='32' cy='22' r='5'/><ellipse cx='32' cy='14' rx='16' ry='6'/><path d='M32 27 v14'/><path d='M32 41 l-7 12'/><path d='M32 41 l7 12'/></svg>"
+    },
+    {
+      name: "Dead Hang (finisher)",
+      meta: "2 × as long as you can",
+      cue: "Just hang. Builds grip and opens the shoulders. Breathe.",
+      video: "Nc-JGSZZMAQ",
+      icon: "<svg viewBox='0 0 64 64'><path d='M10 8 h44'/><path d='M22 8 v6'/><path d='M42 8 v6'/><circle cx='32' cy='22' r='5'/><path d='M22 14 l10 13'/><path d='M42 14 l-10 13'/><path d='M32 27 v16'/><path d='M32 43 l-5 12'/><path d='M32 43 l5 12'/></svg>"
+    }
+  ],
+  B: [
+    {
+      name: "Kettlebell Deadlift",
+      meta: "3 × 10 · 20 kg",
+      cue: "Hinge at the hips, flat back, push the floor away. Foundation move.",
+      video: "MJPGkNqAXzg",
+      icon: "<svg viewBox='0 0 64 64'><circle cx='24' cy='18' r='5'/><path d='M27 22 L40 34'/><path d='M40 34 v18'/><path d='M40 52 h-4'/><path d='M30 26 l4 16'/><circle cx='35' cy='46' r='5'/></svg>"
+    },
+    {
+      name: "One-Arm Dumbbell Row",
+      meta: "3 × 10 per side · dumbbell",
+      cue: "Hand on the bench, pull the weight to your hip. THE back builder you were missing.",
+      video: "tLnlWj7LQ34",
+      icon: "<svg viewBox='0 0 64 64'><path d='M8 44 h22'/><path d='M10 44 v10'/><path d='M28 44 v10'/><circle cx='40' cy='18' r='5'/><path d='M37 22 L20 38'/><path d='M40 30 v6'/><rect x='34' y='36' width='12' height='5' rx='2'/><path d='M44 23 l8 16 v14'/></svg>"
+    },
+    {
+      name: "Kettlebell Swing",
+      meta: "3 × 12 · 16 kg",
+      cue: "It's a hip snap, not an arm lift. Power from the glutes — Pavel/Rogan's favorite.",
+      video: "yHxcTn1UeAc",
+      icon: "<svg viewBox='0 0 64 64'><circle cx='26' cy='14' r='5'/><path d='M26 19 l4 16'/><path d='M30 35 l-8 8 v10'/><path d='M30 35 l4 10 v8'/><path d='M28 24 l18 8'/><circle cx='50' cy='34' r='5'/></svg>"
+    },
+    {
+      name: "Alternating Dumbbell Curl",
+      meta: "3 × 12 per arm · dumbbells",
+      cue: "Elbows pinned to your sides, no swinging. Squeeze at the top.",
+      video: "sAq_ocpRh_I",
+      icon: "<svg viewBox='0 0 64 64'><circle cx='32' cy='12' r='5'/><path d='M32 17 v22'/><path d='M32 39 l-6 14'/><path d='M32 39 l6 14'/><path d='M32 22 l-10 6 l2 -12'/><circle cx='25' cy='14' r='3'/><path d='M32 22 l10 6 v10'/><circle cx='42' cy='40' r='3'/></svg>"
+    },
+    {
+      name: "Dumbbell Shrug",
+      meta: "3 × 12 · heavy dumbbells",
+      cue: "Straight arms, shoulders up to your ears, hold 1 sec, down slow.",
+      video: "xDt6qbKgLkY",
+      icon: "<svg viewBox='0 0 64 64'><circle cx='32' cy='14' r='5'/><path d='M32 19 v20'/><path d='M32 39 l-6 14'/><path d='M32 39 l6 14'/><path d='M32 23 l-9 4 v12'/><path d='M32 23 l9 4 v12'/><path d='M18 18 l4 -5 M46 18 l-4 -5'/></svg>"
+    },
+    {
+      name: "Dead Hang (finisher)",
+      meta: "2 × as long as you can",
+      cue: "Same as Day A. Try to beat your last time.",
+      video: "Nc-JGSZZMAQ",
+      icon: "<svg viewBox='0 0 64 64'><path d='M10 8 h44'/><path d='M22 8 v6'/><path d='M42 8 v6'/><circle cx='32' cy='22' r='5'/><path d='M22 14 l10 13'/><path d='M42 14 l-10 13'/><path d='M32 27 v16'/><path d='M32 43 l-5 12'/><path d='M32 43 l5 12'/></svg>"
+    }
+  ]
+};
+
+const DAY_NOTES = {
+  A: "<b>Day A — Push &amp; Squat.</b> Chest, shoulders and legs. Start with squats while you're fresh, then press. Halos at the end keep your shoulders healthy.",
+  B: "<b>Day B — Pull &amp; Hinge.</b> Back, biceps and the whole back side of your body. This is the half your old program was missing — it balances all that pushing."
+};
+
+function setDay(day) {
+  localStorage.setItem("bigGunzDay", day);
+  document.getElementById("tab-a").classList.toggle("active", day === "A");
+  document.getElementById("tab-b").classList.toggle("active", day === "B");
+  document.getElementById("day-note").innerHTML = DAY_NOTES[day];
+
+  const container = document.getElementById("exercises");
+  container.innerHTML = "";
+  EXERCISES[day].forEach(ex => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML =
+      "<div class='card-head'>" +
+        "<div class='icon'>" + ex.icon + "</div>" +
+        "<div class='info'>" +
+          "<h3>" + ex.name + "</h3>" +
+          "<div class='meta'>" + ex.meta + "</div>" +
+          "<div class='cue'>" + ex.cue + "</div>" +
+        "</div>" +
+        "<div class='play-hint'>▸</div>" +
+      "</div>" +
+      "<div class='video-wrap'>" +
+        "<div class='video-box' data-video='" + ex.video + "'></div>" +
+        "<a class='yt-link' href='https://www.youtube.com/watch?v=" + ex.video + "' target='_blank' rel='noopener'>Open on YouTube ↗</a>" +
+      "</div>";
+    card.querySelector(".card-head").addEventListener("click", () => toggleCard(card));
+    container.appendChild(card);
+  });
+}
+
+function toggleCard(card) {
+  const wasOpen = card.classList.contains("open");
+  // close all others (and stop their videos) so only one plays at a time
+  document.querySelectorAll(".card.open").forEach(c => {
+    c.classList.remove("open");
+    c.querySelector(".video-box").innerHTML = "";
+  });
+  if (!wasOpen) {
+    card.classList.add("open");
+    const box = card.querySelector(".video-box");
+    const iframe = document.createElement("iframe");
+    iframe.src = "https://www.youtube-nocookie.com/embed/" + box.dataset.video + "?rel=0&modestbranding=1";
+    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+    iframe.allowFullscreen = true;
+    box.appendChild(iframe);
+    card.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+}
+
+setDay(localStorage.getItem("bigGunzDay") || "A");
+</script>
+</body>
+</html>
