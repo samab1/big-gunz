@@ -32,14 +32,22 @@ The repo was made public to enable Pages on a free plan. Push directly to `main`
 
 - `EXERCISES = { A: [...], B: [...] }`, each item:
   `name, meta (sets×reps·weight), cue (one-liner), why (explanation), grow (form/growth tips), primary ([muscle keys]), secondary ([muscle keys]), feel (form-check sentence), video (YouTube ID), icon (inline SVG string)`.
-- **Muscle map:** `bodyMap(primary, secondary)` returns inline SVG of two simple
-  figures (front + back) with worked muscles filled (primary = accent, secondary = dim,
-  rest neutral). `muscleChips()` renders plain-language name chips. Muscle keys are the
-  keys of `MNAME` (chest, shoulders, biceps, triceps, forearms, abs, traps, lats,
-  upperback, lowerback, glutes, hamstrings, quads, calves). It's a hand-built SVG **on
-  purpose** — no library (would violate the single dependency-free file rule). To add a
-  muscle, add a shape in both relevant figures + an `MNAME` entry. The `feel` field is
-  the "which muscle should I feel" form-check the user asked for.
+- **Muscle map:** `bodyMap(primary, secondary)` returns inline SVG of two figures
+  (front + back). Each figure is a smooth shared silhouette (`SILPATH`, viewBox
+  140×300) in neutral, with muscle-group shapes drawn on top — primary = accent bright,
+  secondary = dim, unworked = neutral grey. `muscleChips()` renders plain-language name
+  chips. Muscle keys are the keys of `MNAME` (chest, shoulders, biceps, triceps,
+  forearms, abs, traps, lats, upperback, lowerback, glutes, hamstrings, quads, calves).
+  Hand-built SVG **on purpose** — no library (would violate the single dependency-free
+  file rule). To add a muscle, add a shape in both relevant figures + an `MNAME` entry.
+  The `feel` field is the "which muscle should I feel" form-check the user asked for.
+  NOTE: "shoulders" lights both front and rear delts (one key) — a deliberate
+  simplification, so pressing also tints the back delts. Fine for a beginner app.
+- **Verifying SVG visually:** there's no browser preview in chat, but a Chromium binary
+  is preinstalled at `/opt/pw-browsers/chromium-1194/chrome-linux/chrome`. Render any
+  HTML to PNG and Read it back to iterate on visuals:
+  `<chrome> --headless --no-sandbox --disable-gpu --force-device-scale-factor=2 --screenshot=out.png --window-size=300,800 file://ABS/PATH.html`
+  (a stray dbus ERROR line is harmless). This is how the muscle figures were tuned.
 - `DAY_NOTES = { A, B }` — HTML strings explaining each day.
 - localStorage keys:
   - `bigGunzDay` — last selected day ("A"/"B").
@@ -110,3 +118,7 @@ There are no tests and no CI — the syntax check and care are the safety net.
   "Feel it here" form-check line. New exercise fields: `primary`, `secondary`, `feel`.
   Lives in a TARGETS block at the top of each expanded card. No external library
   (deliberate — keeps the single-file rule).
+- **2026-06-28** — Redesigned the muscle figures (user: first version "does not look
+  good"). Replaced disconnected blocky ellipses/rects with a smooth shared silhouette
+  + muscle overlays; better proportions, reads as a real body. Tuned by rendering with
+  the preinstalled Chromium (see "Verifying SVG visually" above).
