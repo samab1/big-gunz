@@ -42,7 +42,7 @@ isolation. Warm-up: 2–3 min arm circles, bodyweight squats, light halos, short
 | Exercise | Sets × Reps | Weight | Why it's in |
 |---|---|---|---|
 | KB deadlift | 3×10 | 20 kg | Hinge pattern, glutes/hams; back-safety school |
-| One-arm DB row | 3×10/side | progressive | THE missing back/V-shape builder; balances pressing |
+| Chest-supported DB row | 3×10 | progressive | Back/V-shape builder; bench supports torso so lower back can't strain |
 | KB swing | 3×12 | 16 kg | Hip power + conditioning; Pavel/Rogan staple |
 | Alternating DB curl | 3×12/arm | progressive | Direct biceps (user favorite, kept from old plan) |
 | DB shrug | 3×12 | heavy | Traps; visible mass, kept from old plan |
@@ -79,3 +79,9 @@ getting repetitive. The current program kept everything they liked and filled th
   User confirmed: 3 days/week, has bench + pull-up bar + heavier dumbbells.
 - **2026-06-11** — User asked whether exercise order is strict. Coached: big lifts
   first, isolation later, hang last; otherwise flexible. Reorder feature added to app.
+- **2026-06-28** — User reported the **one-arm DB row hurts their back**. Root cause:
+  the bent-over hinge holds the torso up and loads the lower back. Replaced it with
+  **chest-supported DB row** on the incline bench (torso fully supported → no lower-back
+  load), same horizontal-pull / lat / mid-back stimulus, simpler form. Program stays
+  balanced (still has the pulling pattern Day B needs). Watch: confirm the new movement
+  is pain-free; if any back pull persists, look at the KB deadlift/swing hinge form next.

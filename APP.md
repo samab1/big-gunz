@@ -66,7 +66,7 @@ there) — if the user reports "Video unavailable" on an exercise, swap that vid
 | KB halo | XzqwVP_wSpc | (exercise demo) |
 | Dead hang | Nc-JGSZZMAQ | (exercise demo) |
 | KB deadlift | MJPGkNqAXzg | NASM |
-| One-arm DB row | tLnlWj7LQ34 | Buff Dudes |
+| Chest-supported DB row | jnj4Lc4Ir3U | (exercise demo) |
 | KB swing | yHxcTn1UeAc | StrongFirst |
 | Alternating DB curl | sAq_ocpRh_I | ScottHermanFitness |
 | DB shrug | xDt6qbKgLkY | ScottHermanFitness |
@@ -90,3 +90,6 @@ There are no tests and no CI — the syntax check and care are the safety net.
   "Uncheck all"; expanded day notes and A/B explanation in coach footer.
 - **2026-06-11** — Reorder mode: ▲▼ arrows per card, per-day saved order,
   "Reset order" button. Card expansion disabled while reordering.
+- **2026-06-28** — Swapped Day B "One-Arm Dumbbell Row" → "Chest-Supported DB Row"
+  (user back pain; see COACH.md). New name resets that card's done/order state — fine,
+  graceful. New video jnj4Lc4Ir3U, new bench-row icon.
