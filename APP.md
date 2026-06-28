@@ -93,3 +93,7 @@ There are no tests and no CI — the syntax check and care are the safety net.
 - **2026-06-28** — Swapped Day B "One-Arm Dumbbell Row" → "Chest-Supported DB Row"
   (user back pain; see COACH.md). New name resets that card's done/order state — fine,
   graceful. New video jnj4Lc4Ir3U, new bench-row icon.
+- **2026-06-28** — Added an "updated YYYY-MM-DD" stamp in the footer. Purpose: user runs
+  the app as an iOS home-screen web clip, which caches aggressively; the stamp lets them
+  confirm a refresh actually pulled the latest. **Bump this date on any user-visible
+  change** (it's near the end of `index.html`, after the coach `.coach` div).
