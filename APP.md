@@ -32,17 +32,23 @@ The repo was made public to enable Pages on a free plan. Push directly to `main`
 
 - `EXERCISES = { A: [...], B: [...] }`, each item:
   `name, meta (sets×reps·weight), cue (one-liner), why (explanation), grow (form/growth tips), primary ([muscle keys]), secondary ([muscle keys]), feel (form-check sentence), video (YouTube ID), icon (inline SVG string)`.
-- **Muscle map:** `bodyMap(primary, secondary)` returns inline SVG of two figures
-  (front + back). Each figure is a smooth shared silhouette (`SILPATH`, viewBox
-  140×300) in neutral, with muscle-group shapes drawn on top — primary = accent bright,
-  secondary = dim, unworked = neutral grey. `muscleChips()` renders plain-language name
-  chips. Muscle keys are the keys of `MNAME` (chest, shoulders, biceps, triceps,
-  forearms, abs, traps, lats, upperback, lowerback, glutes, hamstrings, quads, calves).
-  Hand-built SVG **on purpose** — no library (would violate the single dependency-free
-  file rule). To add a muscle, add a shape in both relevant figures + an `MNAME` entry.
-  The `feel` field is the "which muscle should I feel" form-check the user asked for.
-  NOTE: "shoulders" lights both front and rear delts (one key) — a deliberate
-  simplification, so pressing also tints the back delts. Fine for a beginner app.
+- **Muscle map:** `bodyMap(primary, secondary)` returns inline SVG of two anatomical
+  figures (front + back). The path data is the `BODY` object — real muscle anatomy SVG
+  paths adapted from **react-native-body-highlighter (MIT © 2022 ELABBASSI Hicham)**,
+  recolored to theme. See `THIRD_PARTY_LICENSES.txt` (MIT requires keeping the notice).
+  It's inlined SVG path data, NOT a JS library/dependency — single-file + offline rules
+  still hold. Coordinates live in a 1448-wide canvas: front uses viewBox `0 0 724 1448`,
+  back uses `724 0 724 1448`. `BODY.front` / `BODY.back` map the library's slug →
+  array of path strings. `SLUGMAP` maps our muscle keys → those slugs; `bodyMap` fills
+  primary = accent bright, secondary = dim, everything else neutral grey. `MNAME` holds
+  the plain-language chip labels (chest, shoulders, biceps, triceps, forearms, abs,
+  traps, lats, upperback, lowerback, glutes, hamstrings, quads, calves). The `feel`
+  field is the "which muscle should I feel" form-check.
+  NOTES on the mapping: the asset has no separate lats slug, so both `lats` and
+  `upperback` → `upper-back`. "shoulders" → `deltoids` lights front AND rear delts (the
+  asset keys them together), so pressing also tints the back. Both are deliberate
+  simplifications, fine for a beginner app. To add a muscle, point its key at an existing
+  slug in `SLUGMAP` (+ add an `MNAME` label).
 - **Verifying SVG visually:** there's no browser preview in chat, but a Chromium binary
   is preinstalled at `/opt/pw-browsers/chromium-1194/chrome-linux/chrome`. Render any
   HTML to PNG and Read it back to iterate on visuals:
@@ -122,3 +128,8 @@ There are no tests and no CI — the syntax check and care are the safety net.
   good"). Replaced disconnected blocky ellipses/rects with a smooth shared silhouette
   + muscle overlays; better proportions, reads as a real body. Tuned by rendering with
   the preinstalled Chromium (see "Verifying SVG visually" above).
+- **2026-06-28** — Upgraded again to a real anatomical body: inlined MIT-licensed muscle
+  SVG path data (`BODY` object) from react-native-body-highlighter, recolored to theme.
+  Added `THIRD_PARTY_LICENSES.txt`. Replaced the hand-drawn silhouette renderer with a
+  slug-based one (`SLUGMAP`). index.html grew ~40 KB → ~71 KB total (still one offline
+  file, no build/library). User reviewed a screenshot and approved before integration.
