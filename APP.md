@@ -31,7 +31,15 @@ The repo was made public to enable Pages on a free plan. Push directly to `main`
 ## Data model (in `index.html`)
 
 - `EXERCISES = { A: [...], B: [...] }`, each item:
-  `name, meta (sets×reps·weight), cue (one-liner), why (explanation), grow (form/growth tips), video (YouTube ID), icon (inline SVG string)`.
+  `name, meta (sets×reps·weight), cue (one-liner), why (explanation), grow (form/growth tips), primary ([muscle keys]), secondary ([muscle keys]), feel (form-check sentence), video (YouTube ID), icon (inline SVG string)`.
+- **Muscle map:** `bodyMap(primary, secondary)` returns inline SVG of two simple
+  figures (front + back) with worked muscles filled (primary = accent, secondary = dim,
+  rest neutral). `muscleChips()` renders plain-language name chips. Muscle keys are the
+  keys of `MNAME` (chest, shoulders, biceps, triceps, forearms, abs, traps, lats,
+  upperback, lowerback, glutes, hamstrings, quads, calves). It's a hand-built SVG **on
+  purpose** — no library (would violate the single dependency-free file rule). To add a
+  muscle, add a shape in both relevant figures + an `MNAME` entry. The `feel` field is
+  the "which muscle should I feel" form-check the user asked for.
 - `DAY_NOTES = { A, B }` — HTML strings explaining each day.
 - localStorage keys:
   - `bigGunzDay` — last selected day ("A"/"B").
@@ -97,3 +105,8 @@ There are no tests and no CI — the syntax check and care are the safety net.
   the app as an iOS home-screen web clip, which caches aggressively; the stamp lets them
   confirm a refresh actually pulled the latest. **Bump this date on any user-visible
   change** (it's near the end of `index.html`, after the coach `.coach` div).
+- **2026-06-28** — Added per-exercise muscle map: inline-SVG front+back body figures
+  with worked muscles highlighted (`bodyMap()`), plain-language muscle chips, and a
+  "Feel it here" form-check line. New exercise fields: `primary`, `secondary`, `feel`.
+  Lives in a TARGETS block at the top of each expanded card. No external library
+  (deliberate — keeps the single-file rule).

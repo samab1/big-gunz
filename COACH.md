@@ -85,3 +85,8 @@ getting repetitive. The current program kept everything they liked and filled th
   load), same horizontal-pull / lat / mid-back stimulus, simpler form. Program stays
   balanced (still has the pulling pattern Day B needs). Watch: confirm the new movement
   is pain-free; if any back pull persists, look at the KB deadlift/swing hinge form next.
+- **2026-06-28** — Added a visual muscle map to each exercise (user doesn't know muscle
+  names, is a visual learner). Each exercise now also carries a "Feel it here" cue — the
+  muscle the user should feel working, as a self-check that their form is right. If a
+  future program change adds/edits an exercise, set its `primary`/`secondary` muscles and
+  `feel` cue too (see APP.md for the muscle keys).

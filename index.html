@@ -185,6 +185,36 @@
   .detail.why .label { color: var(--accent-2); }
   .detail.grow .label { color: var(--accent); }
 
+  .targets {
+    margin-top: 10px;
+    padding: 10px 12px;
+    background: var(--card-2);
+    border-radius: 10px;
+  }
+  .targets .label {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #c7cad2;
+    margin-bottom: 4px;
+  }
+  .bodymap { display: flex; justify-content: center; gap: 14px; margin: 4px 0 8px; }
+  .bodymap figure { margin: 0; text-align: center; }
+  .bodymap svg { width: 96px; height: auto; display: block; }
+  .bodymap figcaption { font-size: 0.6rem; color: var(--muted); letter-spacing: 1.5px; margin-top: 1px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+  .chip {
+    font-size: 0.72rem; padding: 3px 10px; border-radius: 999px;
+    background: #2a2f3a; color: var(--muted);
+  }
+  .chip.primary { background: rgba(255,184,77,0.18); color: var(--accent); font-weight: 600; }
+  .chip.secondary { opacity: 0.9; }
+  .chips-hint { text-align: center; font-size: 0.66rem; color: var(--muted); margin-top: 6px; }
+  .feel { margin-top: 9px; font-size: 0.82rem; line-height: 1.45; color: var(--text); }
+  .feel b { color: var(--accent-2); }
+  .feel .hint { color: var(--muted); font-size: 0.76rem; }
+
   .coach {
     background: var(--card);
     border-radius: var(--radius);
@@ -253,6 +283,8 @@ const EXERCISES = {
       cue: "Hold the bell at your chest, sit down between your heels, chest up.",
       why: "Works your quads, glutes and core — the biggest muscles you own. Heavy leg work releases the strongest whole-body growth signal there is, and the goblet version keeps your torso upright so it's very hard to hurt your back. Skipping legs is the #1 reason upper-body progress stalls.",
       grow: "Go deep — elbows should brush the inside of your knees at the bottom. Heels stay glued down. Take 2–3 seconds on the way down, then stand up by squeezing your glutes hard.",
+      primary: ["quads", "glutes"], secondary: ["abs"],
+      feel: "the fronts of your thighs and your glutes (butt)",
       video: "MxsFDhcyFyE",
       icon: "<svg viewBox='0 0 64 64'><circle cx='32' cy='12' r='5'/><path d='M32 17 v10'/><path d='M24 23 h16'/><rect x='28' y='25' width='8' height='8' rx='2'/><path d='M32 33 l-8 10 v9'/><path d='M32 33 l8 10 v9'/></svg>"
     },
@@ -262,6 +294,8 @@ const EXERCISES = {
       cue: "Bench at ~30°. Press up and slightly back, lower slow. Main chest builder.",
       why: "Your #1 chest-size exercise. The incline angle targets the upper chest and front shoulders — the part that fills out a t-shirt and makes you look bigger from every angle. Flys alone can't do this; pressing heavy is what grows the chest.",
       grow: "Keep elbows at ~45° from your body, not flared straight out — that protects your shoulders. Lower slowly until you feel a stretch across the chest, never bounce at the bottom. This is your main 'go heavier over time' lift.",
+      primary: ["chest", "shoulders"], secondary: ["triceps"],
+      feel: "your upper chest, just below your collarbone",
       video: "hChjZQhX1Ls",
       icon: "<svg viewBox='0 0 64 64'><path d='M8 50 L44 30'/><circle cx='40' cy='26' r='5'/><path d='M36 36 l4 -16'/><path d='M38 28 l8 -14'/><rect x='42' y='8' width='10' height='5' rx='2'/></svg>"
     },
@@ -271,6 +305,8 @@ const EXERCISES = {
       cue: "Clean the bell to your shoulder, then press it overhead. One smooth move.",
       why: "Builds shoulders, traps and full-body strength in one move. Pressing overhead is the fastest way to wider-looking shoulders, and the one-arm version forces your core to work hard too. This is classic Pavel-style kettlebell training.",
       grow: "Clean smoothly so the bell rolls onto your forearm — it should never bang your wrist. Brace your abs and squeeze your glutes before pressing; don't lean back to finish a rep. If you lean, the weight is too heavy today.",
+      primary: ["shoulders", "traps"], secondary: ["triceps", "abs"],
+      feel: "your shoulders doing the press, with your upper back/traps helping",
       video: "km3f8_rpDdg",
       icon: "<svg viewBox='0 0 64 64'><circle cx='30' cy='16' r='5'/><path d='M30 21 v18'/><path d='M30 39 l-6 14'/><path d='M30 39 l6 14'/><path d='M30 25 l12 -10'/><circle cx='44' cy='10' r='4'/></svg>"
     },
@@ -280,6 +316,8 @@ const EXERCISES = {
       cue: "Big hug motion, slight bend in elbows, feel the stretch — don't go heavy.",
       why: "The finisher for your chest. Loading a muscle in its stretched position is one of the strongest growth signals known — the fly stretches the chest in a way pressing can't. It also pumps blood into the muscle after the heavy work.",
       grow: "This is the one exercise where light weight wins. Stop where you feel a good stretch — forcing deeper is how people tweak shoulders. Think 'hugging a tree', squeeze the chest as your hands come together.",
+      primary: ["chest"], secondary: ["shoulders"],
+      feel: "a stretch across your chest at the bottom, then your chest squeezing as your hands meet",
       video: "bDaIL_zKbGs",
       icon: "<svg viewBox='0 0 64 64'><path d='M10 48 L46 32'/><circle cx='42' cy='28' r='5'/><path d='M38 36 l-14 -12'/><path d='M40 34 l16 -8'/><circle cx='22' cy='22' r='3'/><circle cx='58' cy='24' r='3'/></svg>"
     },
@@ -289,6 +327,8 @@ const EXERCISES = {
       cue: "Circle the bell slowly around your head. Ribs down, don't arch the back.",
       why: "Your insurance policy. Halos build shoulder mobility and small stabilizer muscles, which is what lets you keep pressing heavier for years without pain. Healthy shoulders are the difference between progressing and being stuck injured.",
       grow: "Slow and controlled is the whole point — this is not a strength contest. Stand tall, keep your ribs down (don't arch), and make the circles tight around your head. If 16 kg feels sloppy, it's fine to go lighter.",
+      primary: ["shoulders"], secondary: ["traps", "abs"],
+      feel: "your shoulders controlling the weight, and your core staying tight",
       video: "XzqwVP_wSpc",
       icon: "<svg viewBox='0 0 64 64'><circle cx='32' cy='22' r='5'/><ellipse cx='32' cy='14' rx='16' ry='6'/><path d='M32 27 v14'/><path d='M32 41 l-7 12'/><path d='M32 41 l7 12'/></svg>"
     },
@@ -298,6 +338,8 @@ const EXERCISES = {
       cue: "Just hang. Builds grip and opens the shoulders. Breathe.",
       why: "Grip strength decides how heavy you can row, deadlift and shrug — train it and everything else goes up. Hanging also decompresses your spine and stretches the lats and shoulders after the workout. It's step one toward pull-ups.",
       grow: "Relax into it and breathe. Time yourself and try to beat last session by a few seconds — that's your progression. When you can hang 60+ seconds easily, tell me and we'll add pull-up steps.",
+      primary: ["forearms"], secondary: ["lats", "shoulders"],
+      feel: "your grip and forearms working, plus a stretch through your shoulders",
       video: "Nc-JGSZZMAQ",
       icon: "<svg viewBox='0 0 64 64'><path d='M10 8 h44'/><path d='M22 8 v6'/><path d='M42 8 v6'/><circle cx='32' cy='22' r='5'/><path d='M22 14 l10 13'/><path d='M42 14 l-10 13'/><path d='M32 27 v16'/><path d='M32 43 l-5 12'/><path d='M32 43 l5 12'/></svg>"
     }
@@ -309,6 +351,8 @@ const EXERCISES = {
       cue: "Hinge at the hips, flat back, push the floor away. Foundation move.",
       why: "Trains the hip hinge — glutes, hamstrings and lower back, the most powerful muscles in your body. It's also the safety school for your spine: learning to hinge properly here is what protects your back in the swing and in daily life.",
       grow: "Push your hips back like you're closing a car door with your butt, back flat, bell close to your shins. Stand up by squeezing your glutes — don't lean back at the top. You should feel hamstrings, never your lower back.",
+      primary: ["glutes", "hamstrings"], secondary: ["lowerback"],
+      feel: "the back of your thighs (hamstrings) and your glutes — NOT your lower back",
       video: "MJPGkNqAXzg",
       icon: "<svg viewBox='0 0 64 64'><circle cx='24' cy='18' r='5'/><path d='M27 22 L40 34'/><path d='M40 34 v18'/><path d='M40 52 h-4'/><path d='M30 26 l4 16'/><circle cx='35' cy='46' r='5'/></svg>"
     },
@@ -318,6 +362,8 @@ const EXERCISES = {
       cue: "Lie face-down on the incline bench, row both dumbbells to your hips. Back fully rested.",
       why: "Same back/V-shape builder as before, but your chest lies on the incline bench so your lower back does nothing — it can't strain. Your lats and mid-back are the biggest upper-body muscles and create the V-shape that makes you look big; this also balances all the pressing from Day A and fixes pressing posture. The supported version is the simplest, safest way to train it.",
       grow: "Set the bench to about 30–45°, lie chest-down, let the dumbbells hang straight down. Pull your elbows toward your hips and squeeze your shoulder blades together for one second, then lower slowly to a full stretch. Let your chest stay glued to the bench — no jerking or lifting off it.",
+      primary: ["lats", "upperback"], secondary: ["biceps", "shoulders"],
+      feel: "the middle of your back squeezing — like pinching your shoulder blades together",
       video: "jnj4Lc4Ir3U",
       icon: "<svg viewBox='0 0 64 64'><path d='M6 46 L40 30'/><circle cx='40' cy='24' r='5'/><path d='M38 29 L30 50'/><path d='M30 50 h-5'/><path d='M30 50 h5'/><path d='M40 34 v8'/><rect x='34' y='42' width='12' height='5' rx='2'/></svg>"
     },
@@ -327,6 +373,8 @@ const EXERCISES = {
       cue: "It's a hip snap, not an arm lift. Power from the glutes — Pavel/Rogan's favorite.",
       why: "The famous one. Explosive hip power builds glutes and hamstrings, hardens your core, and gets your heart rate up — strength and conditioning in one move. It's the exercise Pavel Tsatsouline built his whole system around.",
       grow: "Your arms are just ropes — all power comes from snapping the hips forward. Chest height is high enough. Squeeze your glutes hard and stand tall at the top of every rep. If your lower back burns instead of your glutes, stop and re-watch the video.",
+      primary: ["glutes", "hamstrings"], secondary: ["abs", "lowerback"],
+      feel: "your glutes snapping the weight up — NOT your arms or lower back",
       video: "yHxcTn1UeAc",
       icon: "<svg viewBox='0 0 64 64'><circle cx='26' cy='14' r='5'/><path d='M26 19 l4 16'/><path d='M30 35 l-8 8 v10'/><path d='M30 35 l4 10 v8'/><path d='M28 24 l18 8'/><circle cx='50' cy='34' r='5'/></svg>"
     },
@@ -336,6 +384,8 @@ const EXERCISES = {
       cue: "Elbows pinned to your sides, no swinging. Squeeze at the top.",
       why: "Direct biceps work = bigger arms, simple as that. Strong biceps also help every pulling exercise. It's called Big Gunz for a reason.",
       grow: "The growth is in the lowering: take 2–3 seconds down on every rep. Elbows stay pinned to your sides, no hip swing to cheat the weight up. Full range — all the way down, squeeze hard at the top.",
+      primary: ["biceps"], secondary: ["forearms"],
+      feel: "the front of your upper arm (the biceps) doing the work",
       video: "sAq_ocpRh_I",
       icon: "<svg viewBox='0 0 64 64'><circle cx='32' cy='12' r='5'/><path d='M32 17 v22'/><path d='M32 39 l-6 14'/><path d='M32 39 l6 14'/><path d='M32 22 l-10 6 l2 -12'/><circle cx='25' cy='14' r='3'/><path d='M32 22 l10 6 v10'/><circle cx='42' cy='40' r='3'/></svg>"
     },
@@ -345,6 +395,8 @@ const EXERCISES = {
       cue: "Straight arms, shoulders up to your ears, hold 1 sec, down slow.",
       why: "Traps are the muscle between your neck and shoulders — they grow fast and they're visible in everything you wear. Together with the rows they give you that thick upper-back look.",
       grow: "Straight up and straight down — don't roll your shoulders, that does nothing and annoys the joint. Pause one full second at the top, lower slow. This one can go heavy, it's a simple movement.",
+      primary: ["traps"], secondary: [],
+      feel: "the muscles between your neck and shoulders lifting up",
       video: "xDt6qbKgLkY",
       icon: "<svg viewBox='0 0 64 64'><circle cx='32' cy='14' r='5'/><path d='M32 19 v20'/><path d='M32 39 l-6 14'/><path d='M32 39 l6 14'/><path d='M32 23 l-9 4 v12'/><path d='M32 23 l9 4 v12'/><path d='M18 18 l4 -5 M46 18 l-4 -5'/></svg>"
     },
@@ -354,6 +406,8 @@ const EXERCISES = {
       cue: "Same as Day A. Try to beat your last time.",
       why: "Grip strength decides how heavy you can row, deadlift and shrug — train it and everything else goes up. Hanging also decompresses your spine and stretches the lats and shoulders after the workout. It's step one toward pull-ups.",
       grow: "Relax into it and breathe. Time yourself and try to beat last session by a few seconds — that's your progression. When you can hang 60+ seconds easily, tell me and we'll add pull-up steps.",
+      primary: ["forearms"], secondary: ["lats", "shoulders"],
+      feel: "your grip and forearms working, plus a stretch through your shoulders",
       video: "Nc-JGSZZMAQ",
       icon: "<svg viewBox='0 0 64 64'><path d='M10 8 h44'/><path d='M22 8 v6'/><path d='M42 8 v6'/><circle cx='32' cy='22' r='5'/><path d='M22 14 l10 13'/><path d='M42 14 l-10 13'/><path d='M32 27 v16'/><path d='M32 43 l-5 12'/><path d='M32 43 l5 12'/></svg>"
     }
@@ -364,6 +418,78 @@ const DAY_NOTES = {
   A: "<b>Day A — Push &amp; Squat.</b> Everything that pushes weight away from you: chest, shoulders and triceps — plus legs, because heavy leg work makes your whole body grow. Squats come first while you're fresh, then the presses, then the lighter finishing work.",
   B: "<b>Day B — Pull &amp; Hinge.</b> Everything that pulls: back and biceps, plus glutes and hamstrings. This is the half your old program was missing — it builds the V-shape, balances all the pressing from Day A, and keeps your shoulders and posture healthy."
 };
+
+const MNAME = {
+  chest: "Chest", shoulders: "Shoulders", biceps: "Biceps",
+  triceps: "Triceps", forearms: "Forearms / grip", abs: "Core",
+  traps: "Traps (neck-to-shoulder)", lats: "Lats (back wings)",
+  upperback: "Upper back", lowerback: "Lower back", glutes: "Glutes",
+  hamstrings: "Hamstrings (back thigh)", quads: "Quads (front thigh)", calves: "Calves"
+};
+
+// Two simple stick-anatomy figures (front + back); worked muscles light up.
+function bodyMap(primary, secondary) {
+  primary = primary || []; secondary = secondary || [];
+  const P = "#ffb84d", S = "#9c7a3c", N = "#3a414f", ST = "#262b34";
+  const f = k => primary.indexOf(k) >= 0 ? P : (secondary.indexOf(k) >= 0 ? S : N);
+  const front =
+    "<svg viewBox='0 0 120 250'>" +
+      "<circle cx='60' cy='20' r='13' fill='" + ST + "'/>" +
+      "<rect x='54' y='31' width='12' height='8' rx='3' fill='" + ST + "'/>" +
+      "<rect x='44' y='118' width='32' height='18' rx='5' fill='" + ST + "'/>" +
+      "<circle cx='24' cy='126' r='5' fill='" + ST + "'/><circle cx='96' cy='126' r='5' fill='" + ST + "'/>" +
+      "<rect x='46' y='190' width='12' height='42' rx='6' fill='" + ST + "'/>" +
+      "<rect x='62' y='190' width='12' height='42' rx='6' fill='" + ST + "'/>" +
+      "<ellipse cx='34' cy='50' rx='12' ry='10' fill='" + f('shoulders') + "'/>" +
+      "<ellipse cx='86' cy='50' rx='12' ry='10' fill='" + f('shoulders') + "'/>" +
+      "<rect x='42' y='46' width='17' height='20' rx='5' fill='" + f('chest') + "'/>" +
+      "<rect x='61' y='46' width='17' height='20' rx='5' fill='" + f('chest') + "'/>" +
+      "<ellipse cx='29' cy='80' rx='8' ry='17' fill='" + f('biceps') + "'/>" +
+      "<ellipse cx='91' cy='80' rx='8' ry='17' fill='" + f('biceps') + "'/>" +
+      "<ellipse cx='26' cy='108' rx='7' ry='16' fill='" + f('forearms') + "'/>" +
+      "<ellipse cx='94' cy='108' rx='7' ry='16' fill='" + f('forearms') + "'/>" +
+      "<rect x='49' y='68' width='22' height='34' rx='6' fill='" + f('abs') + "'/>" +
+      "<ellipse cx='52' cy='162' rx='11' ry='30' fill='" + f('quads') + "'/>" +
+      "<ellipse cx='68' cy='162' rx='11' ry='30' fill='" + f('quads') + "'/>" +
+    "</svg>";
+  const back =
+    "<svg viewBox='0 0 120 250'>" +
+      "<circle cx='60' cy='20' r='13' fill='" + ST + "'/>" +
+      "<rect x='54' y='31' width='12' height='8' rx='3' fill='" + ST + "'/>" +
+      "<circle cx='24' cy='126' r='5' fill='" + ST + "'/><circle cx='96' cy='126' r='5' fill='" + ST + "'/>" +
+      "<rect x='46' y='190' width='12' height='42' rx='6' fill='" + ST + "'/>" +
+      "<rect x='62' y='190' width='12' height='42' rx='6' fill='" + ST + "'/>" +
+      "<polygon points='60,33 44,46 48,66 60,72 72,66 76,46' fill='" + f('traps') + "'/>" +
+      "<ellipse cx='34' cy='50' rx='12' ry='10' fill='" + f('shoulders') + "'/>" +
+      "<ellipse cx='86' cy='50' rx='12' ry='10' fill='" + f('shoulders') + "'/>" +
+      "<ellipse cx='29' cy='80' rx='8' ry='17' fill='" + f('triceps') + "'/>" +
+      "<ellipse cx='91' cy='80' rx='8' ry='17' fill='" + f('triceps') + "'/>" +
+      "<ellipse cx='26' cy='108' rx='7' ry='16' fill='" + f('forearms') + "'/>" +
+      "<ellipse cx='94' cy='108' rx='7' ry='16' fill='" + f('forearms') + "'/>" +
+      "<polygon points='47,64 39,76 45,96 58,90 57,66' fill='" + f('lats') + "'/>" +
+      "<polygon points='73,64 81,76 75,96 62,90 63,66' fill='" + f('lats') + "'/>" +
+      "<rect x='51' y='72' width='18' height='14' rx='3' fill='" + f('upperback') + "'/>" +
+      "<rect x='51' y='88' width='18' height='15' rx='4' fill='" + f('lowerback') + "'/>" +
+      "<ellipse cx='52' cy='116' rx='12' ry='12' fill='" + f('glutes') + "'/>" +
+      "<ellipse cx='68' cy='116' rx='12' ry='12' fill='" + f('glutes') + "'/>" +
+      "<ellipse cx='52' cy='160' rx='11' ry='28' fill='" + f('hamstrings') + "'/>" +
+      "<ellipse cx='68' cy='160' rx='11' ry='28' fill='" + f('hamstrings') + "'/>" +
+      "<ellipse cx='52' cy='202' rx='8' ry='18' fill='" + f('calves') + "'/>" +
+      "<ellipse cx='68' cy='202' rx='8' ry='18' fill='" + f('calves') + "'/>" +
+    "</svg>";
+  return "<div class='bodymap'>" +
+           "<figure>" + front + "<figcaption>FRONT</figcaption></figure>" +
+           "<figure>" + back + "<figcaption>BACK</figcaption></figure>" +
+         "</div>";
+}
+
+function muscleChips(primary, secondary) {
+  let html = "<div class='chips'>";
+  (primary || []).forEach(k => html += "<span class='chip primary'>" + MNAME[k] + "</span>");
+  (secondary || []).forEach(k => html += "<span class='chip secondary'>" + MNAME[k] + "</span>");
+  html += "</div>";
+  return html;
+}
 
 let currentDay = "A";
 let reorderMode = false;
@@ -441,6 +567,14 @@ function setDay(day) {
       "<div class='video-wrap'>" +
         "<div class='video-box' data-video='" + ex.video + "'></div>" +
         "<a class='yt-link' href='https://www.youtube.com/watch?v=" + ex.video + "' target='_blank' rel='noopener'>Open on YouTube ↗</a>" +
+        "<div class='targets'>" +
+          "<span class='label'>TARGETS</span>" +
+          bodyMap(ex.primary, ex.secondary) +
+          muscleChips(ex.primary, ex.secondary) +
+          "<div class='chips-hint'>bright = main muscle · dim = also worked</div>" +
+          "<div class='feel'><b>Feel it here:</b> " + ex.feel +
+            " <span class='hint'>If you don't, re-watch the video and check your form.</span></div>" +
+        "</div>" +
         "<div class='detail why'><span class='label'>WHY IT'S HERE</span>" + ex.why + "</div>" +
         "<div class='detail grow'><span class='label'>FOR GROWTH</span>" + ex.grow + "</div>" +
       "</div>";
