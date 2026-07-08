@@ -90,3 +90,16 @@ getting repetitive. The current program kept everything they liked and filled th
   muscle the user should feel working, as a self-check that their form is right. If a
   future program change adds/edits an exercise, set its `primary`/`secondary` muscles and
   `feel` cue too (see APP.md for the muscle keys).
+- **2026-07-08** — User check-in (~4 weeks into program v1): asked for a full program
+  review. Feedback: workouts don't feel hard enough ("could be going stronger") and he's
+  "not finishing as satisfied" regarding muscle growth. Goal restated: get bigger; still
+  wants simple, low-injury-risk exercises. Coach review findings: (1) most likely culprit
+  is effort — beginner probably stopping sets too far from failure; coached that the last
+  set of each exercise should feel genuinely hard (~2 reps left, not 5); (2) progression
+  is about to hit the kettlebell ceiling (goblet squat/deadlift capped at 20 kg) —
+  recommended double progression (grow reps 10→15 before adding weight) and eventually a
+  24 kg bell; (3) two real gaps for the "bigger" goal: **no side-delt work** (recommend DB
+  lateral raise, Day A) and **no direct triceps work** (recommend lying DB triceps
+  extension, Day B) — both simple, low-risk, dumbbell-only; (4) reminded that at 4 weeks
+  visible size is mostly still ahead, and food (protein) + sleep gate growth.
+  **No program change applied yet — awaiting user's go-ahead on the two new exercises.**
