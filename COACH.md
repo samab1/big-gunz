@@ -6,6 +6,7 @@ Update this file whenever the program changes or the user reports anything
 ## The user
 
 - Beginner: a few weeks of training when the program started (June 2026).
+- ~183 cm, ~87 kg (reported 2026-07-08). Trains in the morning.
 - **Big goal: get bigger (hypertrophy).** Upper-body biased interest, but the program
   deliberately stays balanced (legs/pull included) because that serves the goal.
 - Visual learner; does not know exercise names — needs videos and icons.
@@ -103,3 +104,11 @@ getting repetitive. The current program kept everything they liked and filled th
   extension, Day B) — both simple, low-risk, dumbbell-only; (4) reminded that at 4 weeks
   visible size is mostly still ahead, and food (protein) + sleep gate growth.
   **No program change applied yet — awaiting user's go-ahead on the two new exercises.**
+- **2026-07-08** — User shared stats and diet: ~183 cm, ~87 kg, trains in the morning.
+  Typical day: chicken salad lunch + light dinner ("relatively normal and healthy").
+  Asked how much protein to put in a post-workout drink. Coached: **40 g whey in the
+  shake** (simple: two scoops), but flagged the real issue — his daily total is likely
+  ~80–100 g vs the ~150–170 g/day (~1.6–2 g/kg) that the "get bigger" goal needs, and a
+  "light dinner" works against a size goal. Advice: shake after morning workout, protein
+  at every meal (palm-of-meat rule), make dinner the anchor meal, don't fear eating more
+  on training days. Watch: ask at a future check-in whether the shake/protein habit stuck.
