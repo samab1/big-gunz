@@ -92,6 +92,8 @@ there) — if the user reports "Video unavailable" on an exercise, swap that vid
 | KB swing | yHxcTn1UeAc | StrongFirst |
 | Alternating DB curl | sAq_ocpRh_I | ScottHermanFitness |
 | DB shrug | xDt6qbKgLkY | ScottHermanFitness |
+| DB lateral raise | 3VcKaXpzqRo | ScottHermanFitness |
+| Lying DB triceps extension | MO_03opCc0g | ScottHermanFitness |
 
 ## Dev workflow
 
@@ -133,3 +135,14 @@ There are no tests and no CI — the syntax check and care are the safety net.
   Added `THIRD_PARTY_LICENSES.txt`. Replaced the hand-drawn silhouette renderer with a
   slug-based one (`SLUGMAP`). index.html grew ~40 KB → ~71 KB total (still one offline
   file, no build/library). User reviewed a screenshot and approved before integration.
+- **2026-07-08** — Program v2 (see COACH.md): added two exercises — "Dumbbell Lateral
+  Raise" (Day A, after incline fly) and "Lying DB Triceps Extension" (Day B, after
+  curls) — with full card data (why/grow/primary/secondary/feel/video/icon). New
+  stick-figure icons verified via headless-Chromium screenshot. Updated goblet squat and
+  KB deadlift metas to 3×10–15 (double progression), added two coach-footer rules
+  (reps-before-weight when no heavier KB; "last set must feel hard" 5-more-reps test),
+  extended Day B note to mention triceps work. Bumped footer stamp to 2026-07-08.
+  Note for existing users with a saved custom order: names missing from the saved array
+  sort to the end (`indexOf === -1` → 999 in `orderedExercises`), so the two new cards
+  appear at the BOTTOM (after dead hang) until the user reorders or taps "Reset order".
+  With no saved order they appear at their coded positions. Verified in the code.

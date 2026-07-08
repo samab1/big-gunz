@@ -23,29 +23,34 @@ Update this file whenever the program changes or the user reports anything
 - Adjustable bench (incline works).
 - Pull-up bar (used for dead hangs so far).
 
-## Current program (since 2026-06-11)
+## Current program (since 2026-06-11, v2 since 2026-07-08)
 
-Progression rule: finish all sets with good form and ~2 reps left in the tank → go up
-in weight next session. Slow 2–3 s lowering everywhere. Rest ~90 s big moves, ~60 s
-isolation. Warm-up: 2–3 min arm circles, bodyweight squats, light halos, short hang.
+Progression rule (double progression): finish all sets with good form and ~2 reps left
+in the tank → add weight next session; if no heavier weight exists (KB moves), add reps
+up to the top of the range first, then weight. **The last set of every exercise must
+feel genuinely hard** ("could I do 5 more?" → too easy). Slow 2–3 s lowering everywhere.
+Rest ~90 s big moves, ~60 s isolation. Warm-up: 2–3 min arm circles, bodyweight squats,
+light halos, short hang.
 
 ### Day A — Push & Squat
 | Exercise | Sets × Reps | Weight | Why it's in |
 |---|---|---|---|
-| Goblet squat (KB) | 3×10 | 16→20 kg | Legs drive whole-body growth; back-friendly squat |
+| Goblet squat (KB) | 3×10–15 | 16→20 kg | Legs drive whole-body growth; back-friendly squat |
 | Incline DB press | 3×8–10 | progressive | Main chest/size builder; upper chest focus |
 | KB clean & press | 3×6/side | 16 kg (20 last set) | Shoulders/traps + full-body; Pavel style |
 | Incline DB fly | 2×10–12 | light | Loaded stretch = strong growth signal; finisher |
+| DB lateral raise | 3×12–15 | light | Side delts = width; nothing else hits them directly (added v2) |
 | KB halo | 2×8/dir | 16 kg | Shoulder health/mobility insurance |
 | Dead hang | 2×max | bodyweight | Grip, spine decompression, pull-up step 1 |
 
 ### Day B — Pull & Hinge
 | Exercise | Sets × Reps | Weight | Why it's in |
 |---|---|---|---|
-| KB deadlift | 3×10 | 20 kg | Hinge pattern, glutes/hams; back-safety school |
+| KB deadlift | 3×10–15 | 20 kg | Hinge pattern, glutes/hams; back-safety school |
 | Chest-supported DB row | 3×10 | progressive | Back/V-shape builder; bench supports torso so lower back can't strain |
 | KB swing | 3×12 | 16 kg | Hip power + conditioning; Pavel/Rogan staple |
 | Alternating DB curl | 3×12/arm | progressive | Direct biceps (user favorite, kept from old plan) |
+| Lying DB triceps extension | 3×10–12 | light | Triceps = 2/3 of arm size; had zero direct work (added v2) |
 | DB shrug | 3×12 | heavy | Traps; visible mass, kept from old plan |
 | Dead hang | 2×max | bodyweight | Same as Day A |
 
@@ -112,3 +117,17 @@ getting repetitive. The current program kept everything they liked and filled th
   "light dinner" works against a size goal. Advice: shake after morning workout, protein
   at every meal (palm-of-meat rule), make dinner the anchor meal, don't fear eating more
   on training days. Watch: ask at a future check-in whether the shake/protein habit stuck.
+- **2026-07-08** — **Program v2.** User approved the review's recommendations; asked
+  where to add the new exercises, whether anything should be removed, and to update
+  reps/weights. Applied: (1) added **DB lateral raise 3×12–15 light** to Day A after the
+  incline fly (isolation slot, before halo/hang); (2) added **lying DB triceps extension
+  3×10–12 light** to Day B after the curls (arms finish, before shrug/hang); (3) nothing
+  removed — both days are still ~7 exercises / ~45 min, all other work is pulling its
+  weight, so removal would cost more than it saves; (4) reps updated for the KB ceiling:
+  goblet squat and KB deadlift are now **3×10–15 double progression** (reps first, then
+  weight), and the coach rules in the app now state the double-progression rule and the
+  "last set must feel genuinely hard / could-I-do-5-more test". Videos: lateral raise
+  3VcKaXpzqRo, triceps extension MO_03opCc0g (both ScottHermanFitness — embeddability
+  unverified from sandbox as usual; swap if "Video unavailable"). Watch next check-in:
+  are sessions feeling hard again, elbow comfort on the triceps extension, and whether
+  he bought the 24 kg bell.
