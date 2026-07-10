@@ -93,7 +93,7 @@ there) — if the user reports "Video unavailable" on an exercise, swap that vid
 | Alternating DB curl | sAq_ocpRh_I | ScottHermanFitness |
 | DB shrug | xDt6qbKgLkY | ScottHermanFitness |
 | DB lateral raise | 3VcKaXpzqRo | ScottHermanFitness |
-| Lying DB triceps extension | MO_03opCc0g | ScottHermanFitness |
+| DB squeeze press | -fXMo8RbLUM | (exercise demo) |
 
 ## Dev workflow
 
@@ -146,3 +146,7 @@ There are no tests and no CI — the syntax check and care are the safety net.
   sort to the end (`indexOf === -1` → 999 in `orderedExercises`), so the two new cards
   appear at the BOTTOM (after dead hang) until the user reorders or taps "Reset order".
   With no saved order they appear at their coded positions. Verified in the code.
+- **2026-07-10** — Replaced Day B "Lying DB Triceps Extension" → "DB Squeeze Press"
+  (user's tennis-elbow-like pain; see COACH.md journal). New video -fXMo8RbLUM, new
+  bench-press-style icon (two touching bells). Name change resets that card's done/order
+  state — fine, graceful. Bumped footer stamp to 2026-07-10.

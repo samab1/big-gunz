@@ -11,6 +11,11 @@ Update this file whenever the program changes or the user reports anything
   deliberately stays balanced (legs/pull included) because that serves the goal.
 - Visual learner; does not know exercise names — needs videos and icons.
 - Wants simple, low-injury-risk training. No complex movements.
+- ⚠️ **Long-standing tennis-elbow-like pain** (reported 2026-07-10, has had it "a long
+  time"). Triggered by some exercises — lying DB triceps extension set it off. Avoid
+  isolated elbow-extension moves (skullcrushers, overhead extensions, kickbacks); prefer
+  compound pressing for triceps. Watch curls, rows, and dead hangs too — gripping moves
+  commonly aggravate this. If a new exercise triggers it, swap it out.
 - Likes kettlebells. Likes keeping the same gear.
 - Trusts Huberman (→ Andy Galpin) and Rogan (→ Pavel Tsatsouline / StrongFirst style)
   as sources; recommendations land better when framed through those.
@@ -50,7 +55,7 @@ light halos, short hang.
 | Chest-supported DB row | 3×10 | progressive | Back/V-shape builder; bench supports torso so lower back can't strain |
 | KB swing | 3×12 | 16 kg | Hip power + conditioning; Pavel/Rogan staple |
 | Alternating DB curl | 3×12/arm | progressive | Direct biceps (user favorite, kept from old plan) |
-| Lying DB triceps extension | 3×10–12 | light | Triceps = 2/3 of arm size; had zero direct work (added v2) |
+| DB squeeze press | 3×10–12 | moderate | Elbow-friendly triceps (+ inner chest); replaced lying extension (elbow pain) |
 | DB shrug | 3×12 | heavy | Traps; visible mass, kept from old plan |
 | Dead hang | 2×max | bodyweight | Same as Day A |
 
@@ -131,3 +136,15 @@ getting repetitive. The current program kept everything they liked and filled th
   unverified from sandbox as usual; swap if "Video unavailable"). Watch next check-in:
   are sessions feeling hard again, elbow comfort on the triceps extension, and whether
   he bought the 24 kg bell.
+- **2026-07-10** — User reports **long-standing tennis-elbow-like pain** (self-described,
+  not diagnosed), present "a long time", triggered by some exercises — the new lying DB
+  triceps extension set it off. Root cause fits: skullcrusher-style moves put high strain
+  through the elbow with the triceps tendon under stretch — the classic trigger. Replaced
+  it with **DB squeeze press 3×10–12** (flat bench, dumbbells pressed together): triceps
+  get trained hard through pressing while the elbow moves in its natural path — the
+  standard elbow-friendly substitution. Also flagged in the user profile: avoid isolated
+  elbow-extension work going forward; monitor curls/rows/dead hangs (grip-heavy moves are
+  common aggravators of tennis elbow). Advised user: skip anything with sharp elbow pain,
+  and if the pain persists or worsens even outside training, a physio visit is worth it —
+  this is coaching, not medical diagnosis. Watch next check-in: is the squeeze press
+  pain-free; do any other exercises trigger the elbow.
