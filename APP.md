@@ -150,3 +150,11 @@ There are no tests and no CI — the syntax check and care are the safety net.
   (user's tennis-elbow-like pain; see COACH.md journal). New video -fXMo8RbLUM, new
   bench-press-style icon (two touching bells). Name change resets that card's done/order
   state — fine, graceful. Bumped footer stamp to 2026-07-10.
+- **2026-07-10b** — Reordered the DEFAULT exercise order in both `EXERCISES.A` and
+  `EXERCISES.B` to the user's preferred order (slow/controlled first, kettlebells grouped
+  at the end, dead hang last — see COACH.md). This is a pure array-order change; no card
+  content changed except one extra sentence in the KB deadlift `grow` text (hinge-when-
+  fatigued caution). Updated `DAY_NOTES.A` and the coach-footer "why A/B" paragraph, which
+  previously claimed "big moves come first". NOTE: this only changes the default; a user
+  who has tapped the arrows has a saved `bigGunzOrder{A,B}` in localStorage that still
+  overrides this — they'd tap "Reset order" to adopt the new default. Footer stamp 2026-07-10b.

@@ -17,6 +17,11 @@ Update this file whenever the program changes or the user reports anything
   compound pressing for triceps. Watch curls, rows, and dead hangs too — gripping moves
   commonly aggravate this. If a new exercise triggers it, swap it out.
 - Likes kettlebells. Likes keeping the same gear.
+- **Preferred exercise order (default since 2026-07-10):** does NOT like starting with
+  active/explosive moves — prefers to open with slower, controlled work; likes all the
+  kettlebell exercises grouped together toward the END of each day; dead hang always last.
+  Honour this ordering when adding/placing exercises. (Trade-off accepted: it puts the
+  goblet squat and the KB hinges late/when fatigued — see 2026-07-10 journal.)
 - Trusts Huberman (→ Andy Galpin) and Rogan (→ Pavel Tsatsouline / StrongFirst style)
   as sources; recommendations land better when framed through those.
 - Trains at home, 3 days/week (e.g. Mon/Wed/Fri), alternating Day A / Day B.
@@ -37,27 +42,34 @@ feel genuinely hard** ("could I do 5 more?" → too easy). Slow 2–3 s lowering
 Rest ~90 s big moves, ~60 s isolation. Warm-up: 2–3 min arm circles, bodyweight squats,
 light halos, short hang.
 
+Exercise order follows the user's preference (since 2026-07-10): slow/controlled work
+first, kettlebells grouped at the end, dead hang last.
+
 ### Day A — Push & Squat
-| Exercise | Sets × Reps | Weight | Why it's in |
-|---|---|---|---|
-| Goblet squat (KB) | 3×10–15 | 16→20 kg | Legs drive whole-body growth; back-friendly squat |
-| Incline DB press | 3×8–10 | progressive | Main chest/size builder; upper chest focus |
-| KB clean & press | 3×6/side | 16 kg (20 last set) | Shoulders/traps + full-body; Pavel style |
-| Incline DB fly | 2×10–12 | light | Loaded stretch = strong growth signal; finisher |
-| DB lateral raise | 3×12–15 | light | Side delts = width; nothing else hits them directly (added v2) |
-| KB halo | 2×8/dir | 16 kg | Shoulder health/mobility insurance |
-| Dead hang | 2×max | bodyweight | Grip, spine decompression, pull-up step 1 |
+| # | Exercise | Sets × Reps | Weight | Why it's in |
+|---|---|---|---|---|
+| 1 | Incline DB press | 3×8–10 | progressive | Main chest/size builder; upper chest focus |
+| 2 | Incline DB fly | 2×10–12 | light | Loaded stretch = strong growth signal |
+| 3 | DB lateral raise | 3×12–15 | light | Side delts = width; nothing else hits them directly (added v2) |
+| 4 | KB clean & press | 3×6/side | 16 kg (20 last set) | Shoulders/traps + full-body; Pavel style |
+| 5 | KB halo | 2×8/dir | 16 kg | Shoulder health/mobility insurance |
+| 6 | Goblet squat (KB) | 3×10–15 | 16→20 kg | Legs drive whole-body growth; back-friendly squat |
+| 7 | Dead hang | 2×max | bodyweight | Grip, spine decompression, pull-up step 1 |
 
 ### Day B — Pull & Hinge
-| Exercise | Sets × Reps | Weight | Why it's in |
-|---|---|---|---|
-| KB deadlift | 3×10–15 | 20 kg | Hinge pattern, glutes/hams; back-safety school |
-| Chest-supported DB row | 3×10 | progressive | Back/V-shape builder; bench supports torso so lower back can't strain |
-| KB swing | 3×12 | 16 kg | Hip power + conditioning; Pavel/Rogan staple |
-| Alternating DB curl | 3×12/arm | progressive | Direct biceps (user favorite, kept from old plan) |
-| DB squeeze press | 3×10–12 | moderate | Elbow-friendly triceps (+ inner chest); replaced lying extension (elbow pain) |
-| DB shrug | 3×12 | heavy | Traps; visible mass, kept from old plan |
-| Dead hang | 2×max | bodyweight | Same as Day A |
+| # | Exercise | Sets × Reps | Weight | Why it's in |
+|---|---|---|---|---|
+| 1 | Alternating DB curl | 3×12/arm | progressive | Direct biceps (user favorite, kept from old plan) |
+| 2 | Chest-supported DB row | 3×10 | progressive | Back/V-shape builder; bench supports torso so lower back can't strain |
+| 3 | DB squeeze press | 3×10–12 | moderate | Elbow-friendly triceps (+ inner chest); replaced lying extension (elbow pain) |
+| 4 | DB shrug | 3×12 | heavy | Traps; visible mass, kept from old plan |
+| 5 | KB swing | 3×12 | 16 kg | Hip power + conditioning; Pavel/Rogan staple |
+| 6 | KB deadlift | 3×10–15 | 20 kg | Hinge pattern, glutes/hams; back-safety school |
+| 7 | Dead hang | 2×max | bodyweight | Same as Day A |
+
+⚠️ Order note: the two KB hinges (swing, deadlift) now sit at the end of Day B, i.e. when
+fatigued — a mild risk given the user's back history. Deadlift `grow` text now reminds him
+to keep the hinge strict when tired and to move it earlier if his back complains.
 
 Order is flexible within a rule: big lifts first while fresh, isolation later, dead
 hang last. The app lets the user reorder.
@@ -148,3 +160,17 @@ getting repetitive. The current program kept everything they liked and filled th
   and if the pain persists or worsens even outside training, a physio visit is worth it —
   this is coaching, not medical diagnosis. Watch next check-in: is the squeeze press
   pain-free; do any other exercises trigger the elbow.
+- **2026-07-10** — User shared screenshots of the exercise order he prefers and asked to
+  make it the default for both days, and to learn the preference. Stated reasons: dislikes
+  starting with active/explosive exercises (prefers slow, controlled openers) and wants
+  all kettlebell moves grouped toward the end. Reordered both days' default arrays in
+  index.html to match (Day A: press, fly, lateral, KB clean&press, KB halo, goblet squat,
+  hang; Day B: curl, row, squeeze press, shrug, KB swing, KB deadlift, hang). Preference
+  recorded in "The user" section. Coach assessment given (no hard blockers, so honoured):
+  (a) goblet squat now trained late/fatigued — acceptable for his upper-body-biased goal;
+  (b) **main watch-point** — the two KB hinges (swing→deadlift) now finish Day B when he's
+  most fatigued, and he has a back history; advised strict hinge form when tired and to
+  move them earlier if the back complains (added to the deadlift's in-app grow text);
+  (c) curls now open Day B while the elbow is cold — advised warming the elbow first.
+  Also updated the Day A note and coach-footer "why A/B" text (they previously said "big
+  moves first", now describe the slow-first / KB-grouped-last flow).
