@@ -57,8 +57,10 @@ The repo was made public to enable Pages on a free plan. Push directly to `main`
 - `DAY_NOTES = { A, B }` — HTML strings explaining each day.
 - **Vacation mode:** `VEXERCISES = { A, B }` and `VDAY_NOTES = { A, B }` — a parallel
   mat-only bodyweight program (see COACH.md), same item shape as `EXERCISES`. A
-  discrete pill button in the header (`#vac-toggle`, `.vac-btn`, highlighted with
-  `.on` when active) flips `toggleVacation()`. **OFF by default.** `prog()` returns
+  small icon-only 🏖 button in the header's top-right corner (`#vac-toggle`,
+  `.vac-btn`; greyed-out/faded when off, accent-highlighted with `.on` when active)
+  flips `toggleVacation()`; the active day note announces the mode. **OFF by
+  default.** `prog()` returns
   the active program object and `dayKey(day)` returns the storage-key suffix
   (`"A"`/`"B"` normally, `"VA"`/`"VB"` in vacation mode) — all done/order reads and
   writes go through these two helpers, so home progress/order is untouched by a trip
@@ -192,3 +194,10 @@ There are no tests and no CI — the syntax check and care are the safety net.
   (`...VA`/`...VB`) — home progress is untouched. Added one coach-footer rule explaining
   the toggle and the closer-to-failure bodyweight rule. Reorder/done/progress/muscle-map
   features all work identically in both modes (same render path). Footer stamp 2026-07-20.
+- **2026-07-20b** — Made the vacation toggle more discreet (user feedback: the labeled
+  header pill was too prominent). Now an icon-only 🏖 circle button absolutely
+  positioned in the header's top-right corner: `filter: grayscale(1)` + reduced opacity
+  when off, accent border/tint when on. State is communicated by the button highlight +
+  the "🏖 Vacation Day…" heading in the day note; `syncVacBtn` now updates an aria-label
+  instead of button text. Coach-footer rule reworded to point at the corner icon.
+  Footer stamp 2026-07-20b.
