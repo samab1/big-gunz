@@ -74,39 +74,49 @@ to keep the hinge strict when tired and to move it earlier if his back complains
 Order is flexible within a rule: big lifts first while fresh, isolation later, dead
 hang last. The app lets the user reorder.
 
-## Vacation program (since 2026-07-20, used only while traveling)
+## Vacation program (since 2026-07-20, v2 same day, used only while traveling)
 
-Toggled via the discrete "🏖 Vacation mode" button in the app (OFF by default). For
-trips with **no equipment — just a mat**. Goal is unchanged (hypertrophy / keep the
-momentum): same A/B split, same 3 days/week, same slow 2–3 s lowering. Because there
-is no external load, effort rules tighten: **take sets 1–2 reps from failure** (not
-2–3), and progress by adding reps, then harder variations (noted in each card's grow
-text). No pull-up bar assumed → no dead hang; plank/side plank take the finisher slot.
-Elbow rule honoured: triceps come from compound pressing (diamond push-up), no
-isolated elbow extension.
+Toggled via the discrete 🏖 corner button in the app (OFF by default). For trips with
+**no equipment — just a mat** (v2 also assumes a towel, which every accommodation has).
+Goal: hypertrophy, **deliberately upper-body biased** (user's explicit vacation ask:
+"feel and get bigger" — mirrors his original self-made routine's bias; accepted for
+trip length, home program stays balanced). Vacation effort rules (stated in the app):
+**last set of every exercise to failure**, slow 2–3 s lowering, short rests (~60 s,
+45–60 s on burnouts) — with no external load, pump/effort is the growth signal.
+Progress by reps → harder variation (in cards' grow text). No pull-up bar → no dead
+hang; each day ends with a **burnout finisher** (mechanical drop set: full reps to
+failure → knees to failure), which is what delivers the "finish feeling bigger" ask.
+Elbow rule: triceps via compound pressing only; the towel curl is grip-heavy so its
+card carries a skip-if-elbow-complains warning.
 
-### Vacation Day A — Push & Squat (bodyweight)
+### Vacation Day A — Push & Squat (bodyweight, chest/shoulder volume)
 | # | Exercise | Sets × Reps | Stands in for |
 |---|---|---|---|
-| 1 | Push-up | 3×8–15 | Incline DB press / fly (chest, front delts) |
-| 2 | Pike push-up | 3×6–10 | KB clean & press (shoulders) |
-| 3 | Slow squat (3 s down) | 3×15–20 | Goblet squat |
-| 4 | Reverse lunge | 3×10/leg | Extra leg volume (single-leg = load without weight) |
-| 5 | Plank | 3×30–45 s | Finisher (dead hang slot) |
+| 1 | Push-up | 4×8–15, last to failure | Incline DB press |
+| 2 | Wide push-up | 3×8–12 | Incline fly (loaded chest stretch) |
+| 3 | Pike push-up | 3×6–10 | KB clean & press (shoulders) |
+| 4 | Slow squat (3 s down) | 3×15–20 | Goblet squat |
+| 5 | Reverse lunge | 2×10/leg | Extra leg volume |
+| 6 | Push-up burnout | 2 rounds to failure | Pump finisher (dead hang slot) |
 
-### Vacation Day B — Pull & Hinge (bodyweight)
+### Vacation Day B — Gunz & Pull (bodyweight, arm volume)
 | # | Exercise | Sets × Reps | Stands in for |
 |---|---|---|---|
-| 1 | Diamond push-up | 3×8–12 | DB squeeze press (triceps, elbow-friendly) |
-| 2 | Prone Y-T-W raise | 3×8/letter | Chest-supported row (upper back, rear delts) |
-| 3 | Superman | 3×12, 1 s hold | Back-extension work (erectors, glutes) |
-| 4 | Glute bridge | 3×15–20 → single-leg | KB swing + deadlift (hinge/glutes) |
-| 5 | Side plank | 2×20–30 s/side | Finisher |
+| 1 | Towel biceps curl | 3×10 slow/arm | Alternating DB curl (leg = resistance) |
+| 2 | Diamond push-up | 4×8–12 | DB squeeze press (triceps, elbow-friendly) |
+| 3 | Prone Y-T-W raise | 3×8/letter | Chest-supported row (upper back, rear delts) |
+| 4 | Superman | 2×12, 1 s hold | Back-extension work (erectors, glutes) |
+| 5 | Glute bridge | 3×15–20 → single-leg | KB swing + deadlift (hinge/glutes) |
+| 6 | Arm burnout (diamond) | 2 rounds to failure | Pump finisher |
 
-Known gap (accepted): nothing bodyweight-with-only-a-mat truly replaces heavy rows,
-curls or shrugs — lats/biceps/traps run at maintenance for the trip length, which is
-fine for a 1–3 week vacation. If a trip ever runs longer, consider packing a
-resistance band (would restore rows/curls) — suggest at a future check-in.
+v1→v2 (same day, user feedback "want to feel bigger, upper focus"): added wide push-up
++ towel curl + the two burnouts; push-up and diamond push-up gained a set; dropped
+plank and side plank (core still works isometrically in every push-up/burnout), trimmed
+reverse lunge 3→2 and superman 3→2 sets to keep ~17 sets/day.
+
+Known gaps (accepted): heavy rows/shrugs have no true mat substitute — lats/traps run
+at maintenance via Y-T-W; legs/core are deliberately reduced vs home. Fine for a trip;
+if a trip ever runs long, suggest packing a resistance band at a future check-in.
 
 ## History of the user's training (pre-program)
 
@@ -223,3 +233,22 @@ getting repetitive. The current program kept everything they liked and filled th
   acceptable for a normal vacation length. Watch next check-in: how long the trip is,
   whether push-up reps outgrew the range (feet-elevated cue), any elbow reaction to
   diamond push-ups, and whether to suggest a travel resistance band for future trips.
+- **2026-07-20b** — User feedback on the vacation program, twice over: (1) wants it
+  "more muscle and growth focused… by the end of it to feel bigger", and (2) points at
+  his original routine — "a focus on upper body is good". Same theme as the 2026-07-08
+  home check-in (sessions must feel hard / finish satisfied). **Vacation program v2**
+  applied (section above): upper-body volume up (3 push-up angles on Day A incl. new
+  wide push-up as the fly/stretch substitute; Day B now opens with a new towel biceps
+  curl — his favorite movement pattern, leg-as-resistance), each day ends with a
+  burnout finisher (to-failure mechanical drop set → the pump = the "feel bigger"
+  deliverable), push-up volume 3→4 sets on the main movers; core/low-back filler cut
+  (plank + side plank out, lunge and superman trimmed a set) so total stays ~17
+  sets/day. Effort rule tightened from "1–2 reps in reserve" to "last set to failure".
+  Trade-offs consciously accepted and noted: legs/core reduced and bias toward upper
+  body while traveling — his home program stays balanced, and the bias mirrors what he
+  asked for. Elbow watch: towel curl grips hard (tennis-elbow aggravator class) — card
+  says wrist straight / skip if elbow talks; burnout cards have an elbow escape hatch
+  too. New videos: wide push-up rr6eFNNDQdU, towel curl p8z4fhUWhP4 (embeddability
+  unverified from sandbox as usual). Watch next check-in: does he finish vacation
+  sessions feeling pumped/satisfied, elbow response to towel curls, and reps climbing
+  on the push-up variants.

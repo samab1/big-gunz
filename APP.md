@@ -112,12 +112,14 @@ Vacation program videos (same criteria & caveat):
 
 | Exercise | Video ID | Channel |
 |---|---|---|
-| Push-up | I9fsqKE5XHo | ScottHermanFitness |
+| Push-up (+ burnout) | I9fsqKE5XHo | ScottHermanFitness |
+| Wide push-up | rr6eFNNDQdU | (exercise demo) |
 | Pike push-up | 2b5t0Cu2nQI | NASM |
+| Towel biceps curl | p8z4fhUWhP4 | (exercise demo) |
 | Slow squat | P-yaD24bUE8 | (exercise demo) |
 | Reverse lunge | 7pkeQFzJR9g | Buff Dudes |
 | Plank | mwlp75MS6Rg | NASM |
-| Diamond push-up | kGhDnFwMY3E | (exercise demo) |
+| Diamond push-up (+ burnout) | kGhDnFwMY3E | (exercise demo) |
 | Prone Y-T-W raise | QdGTI4Lshg4 | (exercise demo) |
 | Superman | z6PJMT2y8GQ | (exercise demo) |
 | Glute bridge | wQQ6N5piDG0 | (NASM trainer demo) |
@@ -201,3 +203,12 @@ There are no tests and no CI — the syntax check and care are the safety net.
   the "🏖 Vacation Day…" heading in the day note; `syncVacBtn` now updates an aria-label
   instead of button text. Coach-footer rule reworded to point at the corner icon.
   Footer stamp 2026-07-20b.
+- **2026-07-20c** — Vacation program v2 (user: more growth-focused, upper-body biased,
+  "feel bigger" — see COACH.md journal 2026-07-20b). Data-only change to `VEXERCISES` +
+  `VDAY_NOTES` + the coach-footer vacation rule: added 4 cards (Wide Push-Up, Towel
+  Biceps Curl, Push-Up Burnout, Arm Burnout — 2 new icons incl. a shared flame motif for
+  burnouts, verified via Chromium screenshots; burnouts reuse the push-up/diamond
+  videos), removed Plank + Side Plank, set tweaks (push-up & diamond 3→4 sets, lunge &
+  superman 3→2). Plank/side-plank done/order state in `bigGunzDone/OrderV*` goes stale
+  (harmless, name-keyed); with a saved vacation order the new cards sort to the END
+  until "Reset order" — same known behavior as 2026-07-08. Footer stamp 2026-07-20c.

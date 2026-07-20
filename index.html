@@ -293,12 +293,12 @@
     <li><b>Form beats weight.</b> If form breaks, the set is over. Watch the video again whenever unsure.</li>
     <li><b>Eat &amp; sleep:</b> protein with every meal and 7–8 h sleep — that's where the muscle is actually built.</li>
     <li><b>Never two days in a row.</b> Rest days are part of the program.</li>
-    <li><b>Traveling? 🏖</b> Tap the little beach icon in the top corner — bodyweight versions of both days, mat only. With no weights the rules change slightly: go closer to failure (stop 1–2 reps short, not 2–3) and make every lowering slow. Flip it off when you're back with your bells.</li>
+    <li><b>Traveling? 🏖</b> Tap the little beach icon in the top corner — bodyweight versions of both days, mat only. Vacation rules are different: last set of every exercise to failure, rests shorter (~60 s), lowering always slow — with no weights, the pump is the growth signal. Flip it off when you're back with your bells.</li>
   </ul>
 </div>
 
 <p style="text-align:center;color:#5a6172;font-size:0.72rem;margin-top:18px">
-  updated 2026-07-20b
+  updated 2026-07-20c
 </p>
 
 <script>
@@ -474,14 +474,25 @@ const VEXERCISES = {
   A: [
     {
       name: "Push-Up",
-      meta: "3 × 8–15 · bodyweight",
+      meta: "4 × 8–15 · last set to failure",
       cue: "Hands under shoulders, body one straight line. Chest to the mat, press up.",
-      why: "The vacation version of your incline press — same pushing muscles: chest, front shoulders and triceps. Push-ups have built big chests for a century, and with a slow lowering and sets taken close to failure they grow muscle just like the dumbbells do.",
-      grow: "Squeeze your glutes and abs so your body stays one straight line — no sagging hips. Lower for 2–3 seconds until your chest almost touches the mat. Too hard? Put your hands on a bed or table edge. Hitting 15 easily? Put your feet up on something instead.",
+      why: "The vacation version of your incline press — same pushing muscles: chest, front shoulders and triceps. Push-ups have built big chests for a century, and with a slow lowering and the last set taken to failure they grow muscle just like the dumbbells do.",
+      grow: "Squeeze your glutes and abs so your body stays one straight line — no sagging hips. Lower for 2–3 seconds until your chest almost touches the mat. The FINAL set goes all the way to failure — no reps left. Too hard? Hands on a bed or table edge. Hitting 15 easily? Feet up on something instead.",
       primary: ["chest", "shoulders"], secondary: ["triceps", "abs"],
       feel: "your chest working, especially pressing up from the bottom",
       video: "I9fsqKE5XHo",
       icon: "<svg viewBox='0 0 64 64'><circle cx='13' cy='30' r='5'/><path d='M18 33 L50 41'/><path d='M50 41 l6 11'/><path d='M22 34 l-3 10 M25 44 h-6'/><path d='M8 54 h48'/></svg>"
+    },
+    {
+      name: "Wide Push-Up",
+      meta: "3 × 8–12 · bodyweight",
+      cue: "Hands well wider than your shoulders. Lower slow, feel the chest stretch.",
+      why: "Your incline fly, vacation edition. The wide hand position stretches the chest at the bottom the way the fly does — and a loaded stretch is one of the strongest growth signals there is. With the other two push-up angles, your chest gets hit from every direction, just like at home.",
+      grow: "Go wide enough that your forearms stay roughly vertical at the bottom. Lower for a slow 2–3 count until you feel a real stretch across your chest, pause a beat, then press up and squeeze the chest. Shallower than a normal push-up is fine — the stretch is the point.",
+      primary: ["chest"], secondary: ["shoulders", "triceps"],
+      feel: "a deep stretch across your chest at the bottom, then the chest squeezing you back up",
+      video: "rr6eFNNDQdU",
+      icon: "<svg viewBox='0 0 64 64'><circle cx='13' cy='28' r='5'/><path d='M18 31 L50 39'/><path d='M50 39 l6 11'/><path d='M22 32 l-8 8 M14 40 l-4 2'/><path d='M8 52 h48'/><path d='M14 58 h14 M14 58 l4 -3 M14 58 l4 3 M50 58 h-14 M50 58 l-4 -3 M50 58 l-4 3'/></svg>"
     },
     {
       name: "Pike Push-Up",
@@ -507,7 +518,7 @@ const VEXERCISES = {
     },
     {
       name: "Reverse Lunge",
-      meta: "3 × 10 per leg · bodyweight",
+      meta: "2 × 10 per leg · bodyweight",
       cue: "Step back, drop the back knee toward the mat, push up through your front foot.",
       why: "One leg at a time means each leg works twice as hard — that's how legs keep growing without weights. Stepping backwards instead of forwards is the knee-friendly, easier-to-balance version — the beginner-safe lunge.",
       grow: "Push back up through the WHOLE front foot and squeeze that glute as you stand. Back knee taps down slow and controlled — no dropping. Fine to touch a wall for balance at first; it improves fast.",
@@ -517,21 +528,32 @@ const VEXERCISES = {
       icon: "<svg viewBox='0 0 64 64'><circle cx='26' cy='12' r='5'/><path d='M26 17 v18'/><path d='M26 24 l-7 8 M26 24 l7 8'/><path d='M26 35 l-4 10 v8'/><path d='M26 35 l14 6 l4 12'/></svg>"
     },
     {
-      name: "Plank (finisher)",
-      meta: "3 × 30–45 sec",
-      cue: "Forearms down, body one straight line. Squeeze everything and breathe.",
-      why: "Your vacation finisher in the dead hang's slot. A strong braced mid-section supports every press, squat and hinge you do — and abs are half the shirtless look on a beach anyway.",
-      grow: "Squeeze glutes and abs hard and tuck your tailbone — don't let the hips sag or pike up. A short perfect plank beats a long saggy one. When 45 seconds is easy, squeeze harder instead of going longer.",
-      primary: ["abs"], secondary: ["shoulders", "glutes"],
-      feel: "your abs shaking a little — never your lower back",
-      video: "mwlp75MS6Rg",
-      icon: "<svg viewBox='0 0 64 64'><circle cx='13' cy='32' r='5'/><path d='M18 35 L52 42'/><path d='M52 42 l4 10'/><path d='M20 37 v8 h8'/><path d='M8 52 h48'/></svg>"
+      name: "Push-Up Burnout (finisher)",
+      meta: "2 rounds · to failure",
+      cue: "Max push-ups. When you fail, drop to your knees and keep going. That's one round.",
+      why: "The 'feel bigger' insurance. Going past failure with an easier version floods the chest, shoulders and arms with blood — the pump. On vacation the pump isn't a bonus, it IS the size signal: leaving the muscles completely empty is how you walk away feeling grown.",
+      grow: "Full push-ups until you truly can't, drop straight to your knees, keep going until those fail too. Rest just 45–60 seconds between rounds. Form stays honest — chest to the mat every rep, even when shaking. Two rounds, then you're done and pumped.",
+      primary: ["chest", "triceps"], secondary: ["shoulders", "abs"],
+      feel: "your chest and arms pumped completely full — that tight, bigger feeling is the goal",
+      video: "I9fsqKE5XHo",
+      icon: "<svg viewBox='0 0 64 64'><circle cx='13' cy='34' r='5'/><path d='M18 37 L50 44'/><path d='M50 44 l4 8'/><path d='M22 38 l-3 9 M25 47 h-6'/><path d='M8 56 h48'/><path d='M40 22 q5 -8 0 -14 q-2 5 -6 7 q3 3 6 7'/></svg>"
     }
   ],
   B: [
     {
+      name: "Towel Biceps Curl",
+      meta: "3 × 10 slow per arm · towel",
+      cue: "Sit down, loop a towel under your thigh, curl against your own leg's resistance.",
+      why: "It's called Big Gunz — vacation doesn't change that. Loop a towel under your thigh and your leg becomes the dumbbell: it pushes back exactly as hard as you pull. Your favorite curl, rebuilt from hotel-room equipment, opening the day just like at home.",
+      grow: "Your leg sets the weight — resist enough that 10 slow reps is a real fight. Curl up for 2 counts, lower for 3, elbow pinned to your side. ⚠️ This one grips hard: keep the wrist dead straight, and if your elbow says anything, skip it and let the diamond push-ups carry arm day.",
+      primary: ["biceps"], secondary: ["forearms"],
+      feel: "the front of your upper arm fighting your leg both up AND down",
+      video: "p8z4fhUWhP4",
+      icon: "<svg viewBox='0 0 64 64'><circle cx='24' cy='14' r='5'/><path d='M24 19 v16'/><path d='M24 35 l14 2 l6 12'/><path d='M24 35 l-2 14'/><path d='M24 24 l10 4'/><path d='M34 28 l4 10'/><circle cx='38' cy='38' r='2'/></svg>"
+    },
+    {
       name: "Diamond Push-Up",
-      meta: "3 × 8–12 · bodyweight",
+      meta: "4 × 8–12 · bodyweight",
       cue: "Hands close, thumbs and index fingers touching. Elbows stay near your ribs.",
       why: "The vacation squeeze press. Hands close together shifts the push-up onto the triceps — same trick as squeezing the dumbbells together — and the elbows move along their natural pressing path, which your elbow tolerates. It's still called Big Gunz on vacation.",
       grow: "Elbows brush your ribs on the way down — that's what loads the triceps. Lower slow, press up to fully straight arms. Too hard? Do them from your knees. If your elbow complains, move the hands slightly apart — and tell your coach.",
@@ -553,7 +575,7 @@ const VEXERCISES = {
     },
     {
       name: "Superman",
-      meta: "3 × 12 · 1-sec hold",
+      meta: "2 × 12 · 1-sec hold",
       cue: "Face down, lift arms and legs a few inches. Hold one second, lower slow.",
       why: "The whole back side of your body in one move — lower back, glutes and upper back — covering the kettlebell deadlift's job. A strong lower back is also what keeps your hinge safe when you're back on the bells.",
       grow: "Lift smooth, no jerking — a few inches up is plenty. Squeeze the glutes at the top for a full second, lower with control. If your lower back pinches instead of works, lift lower and slower.",
@@ -574,22 +596,22 @@ const VEXERCISES = {
       icon: "<svg viewBox='0 0 64 64'><circle cx='12' cy='44' r='5'/><path d='M17 46 L36 34'/><path d='M36 34 L44 46'/><path d='M44 46 v6'/><path d='M20 48 l4 -8'/><path d='M6 52 h52'/></svg>"
     },
     {
-      name: "Side Plank (finisher)",
-      meta: "2 × 20–30 sec per side",
-      cue: "On one forearm, body straight, hips high. Both sides.",
-      why: "Day B's finisher. It hits the side abs the rest of the program misses and teaches your hips and shoulders to lock in together — the same bracing that protects your back in the swings and deadlifts at home.",
-      grow: "Stack your shoulder over your elbow and push the floor away. Lift the hips until your body is one straight line and don't let them drop. Knees-down version is a fine place to start.",
-      primary: ["abs"], secondary: ["shoulders", "glutes"],
-      feel: "the side of your waist holding you up",
-      video: "44ND4bOB-T0",
-      icon: "<svg viewBox='0 0 64 64'><circle cx='14' cy='26' r='5'/><path d='M19 29 L52 40'/><path d='M52 40 l4 12'/><path d='M26 31 v13'/><path d='M30 24 v-10'/><path d='M8 52 h48'/></svg>"
+      name: "Arm Burnout (finisher)",
+      meta: "2 rounds · to failure",
+      cue: "Diamond push-ups to failure, drop to knees, keep going. That's one round.",
+      why: "Same pump logic as Day A's burnout, aimed straight at the arms. Triceps are two-thirds of your arm's size — emptying them completely at the end of arm day is what makes the sleeves feel tighter on the flight home.",
+      grow: "Elbows brush the ribs every rep, even on your knees, even shaking — that's what keeps it on the triceps. Rest 45–60 seconds between the two rounds. If the elbow complains, switch to regular-width knee push-ups and finish there.",
+      primary: ["triceps", "chest"], secondary: ["shoulders"],
+      feel: "the back of your arms pumped solid",
+      video: "kGhDnFwMY3E",
+      icon: "<svg viewBox='0 0 64 64'><circle cx='13' cy='34' r='5'/><path d='M18 37 L50 44'/><path d='M50 44 l4 8'/><path d='M20 48 l5 -3 l5 3 l-5 3 z'/><path d='M8 56 h48'/><path d='M40 22 q5 -8 0 -14 q-2 5 -6 7 q3 3 6 7'/></svg>"
     }
   ]
 };
 
 const VDAY_NOTES = {
-  A: "<b>🏖 Vacation Day A — Push &amp; Squat, no gear.</b> Same plan as your normal Day A, built from just your body and a mat: push-ups take over for the dumbbell presses, and slow squats + lunges keep your legs growing. Bodyweight grows muscle just as well — IF each set gets close to failure. Slow 2–3&nbsp;s lowering everywhere, and stop only 1–2 reps before you couldn't do another.",
-  B: "<b>🏖 Vacation Day B — Pull &amp; Hinge, no gear.</b> The mirror of your normal Day B: diamond push-ups keep the triceps growing (it's still called Big Gunz), Y-T-W raises and supermans stand in for the rows, and glute bridges cover the hinge. No bar on the road means no dead hang — your grip gets a vacation too."
+  A: "<b>🏖 Vacation Day A — Push &amp; Squat, no gear.</b> Built to leave you feeling BIG: three push-up angles hit the chest and shoulders from every direction — flat for pressing power, wide for the fly-style stretch, hips-up for shoulders — then legs, then a burnout that pumps everything full. With no weights, the pump IS the growth signal: last set of every exercise to failure, slow 2–3&nbsp;s lowering, short rests (~60&nbsp;s).",
+  B: "<b>🏖 Vacation Day B — Gunz &amp; Pull, no gear.</b> Arms first, just like home: towel curls give the biceps something real to fight, diamond push-ups load the triceps, then upper back and the hinge — and an arm burnout so you finish with the sleeves feeling tight. No bar on the road means no dead hang; chase the pump instead."
 };
 
 const MNAME = {
