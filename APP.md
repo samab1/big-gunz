@@ -55,10 +55,21 @@ The repo was made public to enable Pages on a free plan. Push directly to `main`
   `<chrome> --headless --no-sandbox --disable-gpu --force-device-scale-factor=2 --screenshot=out.png --window-size=300,800 file://ABS/PATH.html`
   (a stray dbus ERROR line is harmless). This is how the muscle figures were tuned.
 - `DAY_NOTES = { A, B }` — HTML strings explaining each day.
+- **Vacation mode:** `VEXERCISES = { A, B }` and `VDAY_NOTES = { A, B }` — a parallel
+  mat-only bodyweight program (see COACH.md), same item shape as `EXERCISES`. A
+  discrete pill button in the header (`#vac-toggle`, `.vac-btn`, highlighted with
+  `.on` when active) flips `toggleVacation()`. **OFF by default.** `prog()` returns
+  the active program object and `dayKey(day)` returns the storage-key suffix
+  (`"A"`/`"B"` normally, `"VA"`/`"VB"` in vacation mode) — all done/order reads and
+  writes go through these two helpers, so home progress/order is untouched by a trip
+  and vice versa. Toggling exits reorder mode first and re-renders via `setDay`.
 - localStorage keys:
   - `bigGunzDay` — last selected day ("A"/"B").
-  - `bigGunzDoneA` / `bigGunzDoneB` — JSON array of **exercise names** checked off.
-  - `bigGunzOrderA` / `bigGunzOrderB` — JSON array of names defining custom order.
+  - `bigGunzVacation` — "1" when vacation mode is on ("0"/absent = off).
+  - `bigGunzDoneA` / `bigGunzDoneB` — JSON array of **exercise names** checked off
+    (+ `bigGunzDoneVA` / `bigGunzDoneVB` for vacation mode).
+  - `bigGunzOrderA` / `bigGunzOrderB` — JSON array of names defining custom order
+    (+ `bigGunzOrderVA` / `bigGunzOrderVB` for vacation mode).
   - ⚠️ Done/order state is keyed by exercise **name** — renaming an exercise silently
     resets its state (acceptable; degrade is graceful via the `indexOf === -1` path).
 
@@ -94,6 +105,21 @@ there) — if the user reports "Video unavailable" on an exercise, swap that vid
 | DB shrug | xDt6qbKgLkY | ScottHermanFitness |
 | DB lateral raise | 3VcKaXpzqRo | ScottHermanFitness |
 | DB squeeze press | -fXMo8RbLUM | (exercise demo) |
+
+Vacation program videos (same criteria & caveat):
+
+| Exercise | Video ID | Channel |
+|---|---|---|
+| Push-up | I9fsqKE5XHo | ScottHermanFitness |
+| Pike push-up | 2b5t0Cu2nQI | NASM |
+| Slow squat | P-yaD24bUE8 | (exercise demo) |
+| Reverse lunge | 7pkeQFzJR9g | Buff Dudes |
+| Plank | mwlp75MS6Rg | NASM |
+| Diamond push-up | kGhDnFwMY3E | (exercise demo) |
+| Prone Y-T-W raise | QdGTI4Lshg4 | (exercise demo) |
+| Superman | z6PJMT2y8GQ | (exercise demo) |
+| Glute bridge | wQQ6N5piDG0 | (NASM trainer demo) |
+| Side plank | 44ND4bOB-T0 | NASM |
 
 ## Dev workflow
 
@@ -158,3 +184,11 @@ There are no tests and no CI — the syntax check and care are the safety net.
   previously claimed "big moves come first". NOTE: this only changes the default; a user
   who has tapped the arrows has a saved `bigGunzOrder{A,B}` in localStorage that still
   overrides this — they'd tap "Reset order" to adopt the new default. Footer stamp 2026-07-10b.
+- **2026-07-20** — Vacation mode (user traveling, mat only; see COACH.md). Added
+  `VEXERCISES`/`VDAY_NOTES` (10 new full exercise cards incl. new stick-figure icons,
+  verified via headless-Chromium screenshots), a discrete "🏖 Vacation mode" pill toggle
+  in the header (OFF by default, persisted as `bigGunzVacation`), and the `prog()`/
+  `dayKey()` helpers so vacation done/order state lives under separate localStorage keys
+  (`...VA`/`...VB`) — home progress is untouched. Added one coach-footer rule explaining
+  the toggle and the closer-to-failure bodyweight rule. Reorder/done/progress/muscle-map
+  features all work identically in both modes (same render path). Footer stamp 2026-07-20.

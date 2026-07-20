@@ -77,6 +77,23 @@
   }
   .uncheck-btn:active { color: var(--text); border-color: var(--muted); }
 
+  .vac-row { text-align: center; margin-top: 10px; }
+  .vac-btn {
+    background: none;
+    border: 1px solid var(--card-2);
+    color: var(--muted);
+    font-size: 0.78rem;
+    padding: 6px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .vac-btn.on {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(255,184,77,0.08);
+  }
+
   .card {
     background: var(--card);
     border-radius: var(--radius);
@@ -236,6 +253,9 @@
 <header>
   <h1>BIG GUNZ 💪</h1>
   <p>3 days a week · alternate A and B · e.g. Mon / Wed / Fri</p>
+  <div class="vac-row">
+    <button class="vac-btn" id="vac-toggle" onclick="toggleVacation()">🏖 Vacation mode: off</button>
+  </div>
 </header>
 
 <div class="tabs">
@@ -268,11 +288,12 @@
     <li><b>Form beats weight.</b> If form breaks, the set is over. Watch the video again whenever unsure.</li>
     <li><b>Eat &amp; sleep:</b> protein with every meal and 7–8 h sleep — that's where the muscle is actually built.</li>
     <li><b>Never two days in a row.</b> Rest days are part of the program.</li>
+    <li><b>Traveling? 🏖</b> Flip on Vacation mode under the title — bodyweight versions of both days, mat only. With no weights the rules change slightly: go closer to failure (stop 1–2 reps short, not 2–3) and make every lowering slow. Flip it off when you're back with your bells.</li>
   </ul>
 </div>
 
 <p style="text-align:center;color:#5a6172;font-size:0.72rem;margin-top:18px">
-  updated 2026-07-10b
+  updated 2026-07-20
 </p>
 
 <script>
@@ -442,6 +463,130 @@ const DAY_NOTES = {
   B: "<b>Day B — Pull &amp; Hinge.</b> Everything that pulls: back and biceps, plus glutes and hamstrings — and direct triceps work to finish the arms (it's called Big Gunz for a reason). This is the half your old program was missing — it builds the V-shape, balances all the pressing from Day A, and keeps your shoulders and posture healthy."
 };
 
+// Vacation program: mat-only bodyweight versions of both days (see COACH.md).
+// Toggled by the 🏖 button; done/order state is stored separately (key suffix "V").
+const VEXERCISES = {
+  A: [
+    {
+      name: "Push-Up",
+      meta: "3 × 8–15 · bodyweight",
+      cue: "Hands under shoulders, body one straight line. Chest to the mat, press up.",
+      why: "The vacation version of your incline press — same pushing muscles: chest, front shoulders and triceps. Push-ups have built big chests for a century, and with a slow lowering and sets taken close to failure they grow muscle just like the dumbbells do.",
+      grow: "Squeeze your glutes and abs so your body stays one straight line — no sagging hips. Lower for 2–3 seconds until your chest almost touches the mat. Too hard? Put your hands on a bed or table edge. Hitting 15 easily? Put your feet up on something instead.",
+      primary: ["chest", "shoulders"], secondary: ["triceps", "abs"],
+      feel: "your chest working, especially pressing up from the bottom",
+      video: "I9fsqKE5XHo",
+      icon: "<svg viewBox='0 0 64 64'><circle cx='13' cy='30' r='5'/><path d='M18 33 L50 41'/><path d='M50 41 l6 11'/><path d='M22 34 l-3 10 M25 44 h-6'/><path d='M8 54 h48'/></svg>"
+    },
+    {
+      name: "Pike Push-Up",
+      meta: "3 × 6–10 · bodyweight",
+      cue: "Hips high like a triangle, lower your head toward the floor, press back up.",
+      why: "Your shoulder press without the kettlebell. With your hips up high the push becomes almost vertical, so the shoulders do the pressing — same job as the clean &amp; press at home. Keeps your shoulders growing while the bells wait for you.",
+      grow: "Walk your feet in so your hips are as high as possible — the more vertical, the more shoulder. Lower slowly to a spot between your hands, elbows tracking back, not flared. If 6 reps is too hard, walk your feet out to make it flatter.",
+      primary: ["shoulders"], secondary: ["triceps", "traps"],
+      feel: "your shoulders pressing, like pushing something overhead",
+      video: "2b5t0Cu2nQI",
+      icon: "<svg viewBox='0 0 64 64'><circle cx='16' cy='38' r='5'/><path d='M16 43 l-6 11'/><path d='M18 34 L36 20'/><path d='M36 20 L48 42'/><path d='M48 42 l8 12'/><path d='M8 54 h48'/></svg>"
+    },
+    {
+      name: "Slow Squat",
+      meta: "3 × 15–20 · bodyweight, 3-sec down",
+      cue: "Arms out front, sit down between your heels for a slow 3 seconds, stand up strong.",
+      why: "Your goblet squat without the bell. With no weight, slowness IS the weight: a strict 3-second descent and a full deep squat keeps your legs growing — and heavy-feeling leg work keeps the whole-body growth signal alive on vacation.",
+      grow: "A full 3 seconds down every rep, as deep as comfortable, heels glued down, then stand up by squeezing your glutes. When 20 slow reps feel easy, add a 2-second pause at the bottom of every rep instead of more reps.",
+      primary: ["quads", "glutes"], secondary: ["abs"],
+      feel: "the fronts of your thighs and your glutes",
+      video: "P-yaD24bUE8",
+      icon: "<svg viewBox='0 0 64 64'><circle cx='30' cy='14' r='5'/><path d='M30 19 v13'/><path d='M30 24 h14'/><path d='M30 32 l-11 6 l2 13'/><path d='M30 32 l11 6 l-2 13'/></svg>"
+    },
+    {
+      name: "Reverse Lunge",
+      meta: "3 × 10 per leg · bodyweight",
+      cue: "Step back, drop the back knee toward the mat, push up through your front foot.",
+      why: "One leg at a time means each leg works twice as hard — that's how legs keep growing without weights. Stepping backwards instead of forwards is the knee-friendly, easier-to-balance version — the beginner-safe lunge.",
+      grow: "Push back up through the WHOLE front foot and squeeze that glute as you stand. Back knee taps down slow and controlled — no dropping. Fine to touch a wall for balance at first; it improves fast.",
+      primary: ["quads", "glutes"], secondary: ["hamstrings", "abs"],
+      feel: "the front thigh and glute of your FRONT leg pushing you up",
+      video: "7pkeQFzJR9g",
+      icon: "<svg viewBox='0 0 64 64'><circle cx='26' cy='12' r='5'/><path d='M26 17 v18'/><path d='M26 24 l-7 8 M26 24 l7 8'/><path d='M26 35 l-4 10 v8'/><path d='M26 35 l14 6 l4 12'/></svg>"
+    },
+    {
+      name: "Plank (finisher)",
+      meta: "3 × 30–45 sec",
+      cue: "Forearms down, body one straight line. Squeeze everything and breathe.",
+      why: "Your vacation finisher in the dead hang's slot. A strong braced mid-section supports every press, squat and hinge you do — and abs are half the shirtless look on a beach anyway.",
+      grow: "Squeeze glutes and abs hard and tuck your tailbone — don't let the hips sag or pike up. A short perfect plank beats a long saggy one. When 45 seconds is easy, squeeze harder instead of going longer.",
+      primary: ["abs"], secondary: ["shoulders", "glutes"],
+      feel: "your abs shaking a little — never your lower back",
+      video: "mwlp75MS6Rg",
+      icon: "<svg viewBox='0 0 64 64'><circle cx='13' cy='32' r='5'/><path d='M18 35 L52 42'/><path d='M52 42 l4 10'/><path d='M20 37 v8 h8'/><path d='M8 52 h48'/></svg>"
+    }
+  ],
+  B: [
+    {
+      name: "Diamond Push-Up",
+      meta: "3 × 8–12 · bodyweight",
+      cue: "Hands close, thumbs and index fingers touching. Elbows stay near your ribs.",
+      why: "The vacation squeeze press. Hands close together shifts the push-up onto the triceps — same trick as squeezing the dumbbells together — and the elbows move along their natural pressing path, which your elbow tolerates. It's still called Big Gunz on vacation.",
+      grow: "Elbows brush your ribs on the way down — that's what loads the triceps. Lower slow, press up to fully straight arms. Too hard? Do them from your knees. If your elbow complains, move the hands slightly apart — and tell your coach.",
+      primary: ["triceps", "chest"], secondary: ["shoulders"],
+      feel: "the back of your upper arms pressing you up",
+      video: "kGhDnFwMY3E",
+      icon: "<svg viewBox='0 0 64 64'><circle cx='13' cy='28' r='5'/><path d='M18 31 L50 40'/><path d='M50 40 l6 12'/><path d='M22 32 l-1 10 M30 34 l-6 8'/><path d='M20 46 l6 -4 l6 4 l-6 4 z'/><path d='M8 54 h48'/></svg>"
+    },
+    {
+      name: "Prone Y-T-W Raise",
+      meta: "3 × 8 of each letter · bodyweight",
+      cue: "Lie face down. Lift your arms in a Y, then a T, then a W. Thumbs up, squeeze the shoulder blades.",
+      why: "Your row substitute. Face down, lifting the arms against gravity makes the mid-back and rear shoulders do exactly what they do in a row: pull the shoulder blades together. Small motion — but done slow and squeezed hard, it keeps your upper back switched on until the dumbbells are back.",
+      grow: "Thumbs point at the ceiling, and the squeeze comes from between your shoulder blades — not from arching the lower back. Hold each rep up for a second. It looks easy and burns by rep 6 — that burn is the target.",
+      primary: ["upperback", "shoulders"], secondary: ["traps"],
+      feel: "the middle of your back squeezing, between the shoulder blades",
+      video: "QdGTI4Lshg4",
+      icon: "<svg viewBox='0 0 64 64'><circle cx='32' cy='14' r='5'/><path d='M32 19 v22'/><path d='M32 24 l-11 -9 M32 24 l11 -9'/><path d='M32 41 l-5 13 M32 41 l5 13'/></svg>"
+    },
+    {
+      name: "Superman",
+      meta: "3 × 12 · 1-sec hold",
+      cue: "Face down, lift arms and legs a few inches. Hold one second, lower slow.",
+      why: "The whole back side of your body in one move — lower back, glutes and upper back — covering the kettlebell deadlift's job. A strong lower back is also what keeps your hinge safe when you're back on the bells.",
+      grow: "Lift smooth, no jerking — a few inches up is plenty. Squeeze the glutes at the top for a full second, lower with control. If your lower back pinches instead of works, lift lower and slower.",
+      primary: ["lowerback", "glutes"], secondary: ["upperback", "hamstrings"],
+      feel: "your lower back and glutes lifting — a squeeze, never a pinch",
+      video: "z6PJMT2y8GQ",
+      icon: "<svg viewBox='0 0 64 64'><circle cx='12' cy='34' r='5'/><path d='M17 36 Q32 44 46 38'/><path d='M46 38 l10 -6'/><path d='M17 33 l-9 -8'/><path d='M6 50 h52'/></svg>"
+    },
+    {
+      name: "Glute Bridge",
+      meta: "3 × 15–20 · bodyweight",
+      cue: "On your back, feet flat. Drive hips up, squeeze the glutes hard at the top.",
+      why: "Your hinge on vacation — the same glutes-and-hamstrings job as the KB swing and deadlift, done lying safely on your mat. Glutes are the biggest muscle you own; keep them growing and everything at home goes up when you return.",
+      grow: "Drive through your heels and squeeze your glutes HARD for one second at the top — straight line from knees to shoulders, no arching higher with the back. When 20 reps is easy, do them one leg at a time. That's the whole progression.",
+      primary: ["glutes", "hamstrings"], secondary: ["abs", "lowerback"],
+      feel: "your glutes doing the lifting — not your lower back",
+      video: "wQQ6N5piDG0",
+      icon: "<svg viewBox='0 0 64 64'><circle cx='12' cy='44' r='5'/><path d='M17 46 L36 34'/><path d='M36 34 L44 46'/><path d='M44 46 v6'/><path d='M20 48 l4 -8'/><path d='M6 52 h52'/></svg>"
+    },
+    {
+      name: "Side Plank (finisher)",
+      meta: "2 × 20–30 sec per side",
+      cue: "On one forearm, body straight, hips high. Both sides.",
+      why: "Day B's finisher. It hits the side abs the rest of the program misses and teaches your hips and shoulders to lock in together — the same bracing that protects your back in the swings and deadlifts at home.",
+      grow: "Stack your shoulder over your elbow and push the floor away. Lift the hips until your body is one straight line and don't let them drop. Knees-down version is a fine place to start.",
+      primary: ["abs"], secondary: ["shoulders", "glutes"],
+      feel: "the side of your waist holding you up",
+      video: "44ND4bOB-T0",
+      icon: "<svg viewBox='0 0 64 64'><circle cx='14' cy='26' r='5'/><path d='M19 29 L52 40'/><path d='M52 40 l4 12'/><path d='M26 31 v13'/><path d='M30 24 v-10'/><path d='M8 52 h48'/></svg>"
+    }
+  ]
+};
+
+const VDAY_NOTES = {
+  A: "<b>🏖 Vacation Day A — Push &amp; Squat, no gear.</b> Same plan as your normal Day A, built from just your body and a mat: push-ups take over for the dumbbell presses, and slow squats + lunges keep your legs growing. Bodyweight grows muscle just as well — IF each set gets close to failure. Slow 2–3&nbsp;s lowering everywhere, and stop only 1–2 reps before you couldn't do another.",
+  B: "<b>🏖 Vacation Day B — Pull &amp; Hinge, no gear.</b> The mirror of your normal Day B: diamond push-ups keep the triceps growing (it's still called Big Gunz), Y-T-W raises and supermans stand in for the rows, and glute bridges cover the hinge. No bar on the road means no dead hang — your grip gets a vacation too."
+};
+
 const MNAME = {
   chest: "Chest", shoulders: "Shoulders", biceps: "Biceps",
   triceps: "Triceps", forearms: "Forearms / grip", abs: "Core",
@@ -487,14 +632,33 @@ function muscleChips(primary, secondary) {
 
 let currentDay = "A";
 let reorderMode = false;
+let vacation = localStorage.getItem("bigGunzVacation") === "1";
+
+// Current program + storage-key suffix. Vacation state lives under separate keys
+// ("...VA"/"...VB") so home progress/order survives the trip untouched.
+function prog() { return vacation ? VEXERCISES : EXERCISES; }
+function dayKey(day) { return (vacation ? "V" : "") + day; }
+
+function syncVacBtn() {
+  const b = document.getElementById("vac-toggle");
+  b.classList.toggle("on", vacation);
+  b.textContent = vacation ? "🏖 Vacation mode: ON" : "🏖 Vacation mode: off";
+}
+function toggleVacation() {
+  vacation = !vacation;
+  localStorage.setItem("bigGunzVacation", vacation ? "1" : "0");
+  if (reorderMode) toggleReorder();
+  syncVacBtn();
+  setDay(currentDay);
+}
 
 function getOrder(day) {
-  try { return JSON.parse(localStorage.getItem("bigGunzOrder" + day)) || null; }
+  try { return JSON.parse(localStorage.getItem("bigGunzOrder" + dayKey(day))) || null; }
   catch { return null; }
 }
 function orderedExercises(day) {
   const saved = getOrder(day);
-  const list = EXERCISES[day].slice();
+  const list = prog()[day].slice();
   if (!saved) return list;
   list.sort((a, b) => {
     const ia = saved.indexOf(a.name), ib = saved.indexOf(b.name);
@@ -508,7 +672,7 @@ function moveEx(name, dir) {
   const j = i + dir;
   if (j < 0 || j >= names.length) return;
   [names[i], names[j]] = [names[j], names[i]];
-  localStorage.setItem("bigGunzOrder" + currentDay, JSON.stringify(names));
+  localStorage.setItem("bigGunzOrder" + dayKey(currentDay), JSON.stringify(names));
   setDay(currentDay);
 }
 function toggleReorder() {
@@ -518,16 +682,16 @@ function toggleReorder() {
   updateProgress();
 }
 function resetOrder() {
-  localStorage.removeItem("bigGunzOrder" + currentDay);
+  localStorage.removeItem("bigGunzOrder" + dayKey(currentDay));
   setDay(currentDay);
 }
 
 function doneList(day) {
-  try { return JSON.parse(localStorage.getItem("bigGunzDone" + day)) || []; }
+  try { return JSON.parse(localStorage.getItem("bigGunzDone" + dayKey(day))) || []; }
   catch { return []; }
 }
 function saveDone(day, list) {
-  localStorage.setItem("bigGunzDone" + day, JSON.stringify(list));
+  localStorage.setItem("bigGunzDone" + dayKey(day), JSON.stringify(list));
 }
 
 function setDay(day) {
@@ -535,7 +699,7 @@ function setDay(day) {
   localStorage.setItem("bigGunzDay", day);
   document.getElementById("tab-a").classList.toggle("active", day === "A");
   document.getElementById("tab-b").classList.toggle("active", day === "B");
-  document.getElementById("day-note").innerHTML = DAY_NOTES[day];
+  document.getElementById("day-note").innerHTML = (vacation ? VDAY_NOTES : DAY_NOTES)[day];
 
   const done = doneList(day);
   const container = document.getElementById("exercises");
@@ -603,7 +767,7 @@ function uncheckAll() {
 }
 
 function updateProgress() {
-  const total = EXERCISES[currentDay].length;
+  const total = prog()[currentDay].length;
   const n = doneList(currentDay).length;
   const el = document.getElementById("progress");
   if (n === total) {
@@ -636,6 +800,7 @@ function toggleCard(card) {
   }
 }
 
+syncVacBtn();
 setDay(localStorage.getItem("bigGunzDay") || "A");
 </script>
 </body>

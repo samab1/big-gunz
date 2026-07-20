@@ -74,6 +74,40 @@ to keep the hinge strict when tired and to move it earlier if his back complains
 Order is flexible within a rule: big lifts first while fresh, isolation later, dead
 hang last. The app lets the user reorder.
 
+## Vacation program (since 2026-07-20, used only while traveling)
+
+Toggled via the discrete "🏖 Vacation mode" button in the app (OFF by default). For
+trips with **no equipment — just a mat**. Goal is unchanged (hypertrophy / keep the
+momentum): same A/B split, same 3 days/week, same slow 2–3 s lowering. Because there
+is no external load, effort rules tighten: **take sets 1–2 reps from failure** (not
+2–3), and progress by adding reps, then harder variations (noted in each card's grow
+text). No pull-up bar assumed → no dead hang; plank/side plank take the finisher slot.
+Elbow rule honoured: triceps come from compound pressing (diamond push-up), no
+isolated elbow extension.
+
+### Vacation Day A — Push & Squat (bodyweight)
+| # | Exercise | Sets × Reps | Stands in for |
+|---|---|---|---|
+| 1 | Push-up | 3×8–15 | Incline DB press / fly (chest, front delts) |
+| 2 | Pike push-up | 3×6–10 | KB clean & press (shoulders) |
+| 3 | Slow squat (3 s down) | 3×15–20 | Goblet squat |
+| 4 | Reverse lunge | 3×10/leg | Extra leg volume (single-leg = load without weight) |
+| 5 | Plank | 3×30–45 s | Finisher (dead hang slot) |
+
+### Vacation Day B — Pull & Hinge (bodyweight)
+| # | Exercise | Sets × Reps | Stands in for |
+|---|---|---|---|
+| 1 | Diamond push-up | 3×8–12 | DB squeeze press (triceps, elbow-friendly) |
+| 2 | Prone Y-T-W raise | 3×8/letter | Chest-supported row (upper back, rear delts) |
+| 3 | Superman | 3×12, 1 s hold | Back-extension work (erectors, glutes) |
+| 4 | Glute bridge | 3×15–20 → single-leg | KB swing + deadlift (hinge/glutes) |
+| 5 | Side plank | 2×20–30 s/side | Finisher |
+
+Known gap (accepted): nothing bodyweight-with-only-a-mat truly replaces heavy rows,
+curls or shrugs — lats/biceps/traps run at maintenance for the trip length, which is
+fine for a 1–3 week vacation. If a trip ever runs longer, consider packing a
+resistance band (would restore rows/curls) — suggest at a future check-in.
+
 ## History of the user's training (pre-program)
 
 Original self-made routine (all pushing/arms, no pulling or hinge): DB alt curls 12×3,
@@ -174,3 +208,18 @@ getting repetitive. The current program kept everything they liked and filled th
   (c) curls now open Day B while the elbow is cold — advised warming the elbow first.
   Also updated the Day A note and coach-footer "why A/B" text (they previously said "big
   moves first", now describe the slow-first / KB-grouped-last flow).
+- **2026-07-20** — User is **on vacation with no gym access — only a mat** — and asked
+  for a vacation version of the workouts to keep the muscle-growth momentum, behind a
+  discrete toggle that is OFF by default. Built the vacation program (section above) and
+  the app toggle. Coaching logic: mirror the A/B pattern split with mat-only bodyweight
+  moves; with no load, intensity comes from slow negatives, full range, and stopping
+  only 1–2 reps from failure; progress reps → harder variation. Respected the standing
+  constraints: elbow (triceps via diamond push-up = compound pressing, with a
+  widen-hands-and-report escape hatch in its grow text), back (glute bridge and superman
+  are floor-supported; superman card warns "squeeze, never a pinch"), ordering preference
+  (controlled work first, finisher last), and simplicity (5 moves/day). No pull-up bar
+  on the road → no dead hang; told him his grip "gets a vacation too". Honest gap flagged
+  in the section above: rows/curls/shrugs only get maintenance stimulus from Y-T-W work —
+  acceptable for a normal vacation length. Watch next check-in: how long the trip is,
+  whether push-up reps outgrew the range (feet-elevated cue), any elbow reaction to
+  diamond push-ups, and whether to suggest a travel resistance band for future trips.
