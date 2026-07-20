@@ -108,22 +108,28 @@ there) — if the user reports "Video unavailable" on an exercise, swap that vid
 | DB lateral raise | 3VcKaXpzqRo | ScottHermanFitness |
 | DB squeeze press | -fXMo8RbLUM | (exercise demo) |
 
-Vacation program videos (same criteria & caveat):
+Vacation program videos — all channels VERIFIED via oEmbed (see note below), not just
+search-result labels:
 
-| Exercise | Video ID | Channel |
+| Exercise | Video ID | Channel (verified) |
 |---|---|---|
-| Push-up (+ burnout) | I9fsqKE5XHo | ScottHermanFitness |
-| Wide push-up | rr6eFNNDQdU | (exercise demo) |
-| Pike push-up | 2b5t0Cu2nQI | NASM |
-| Towel biceps curl | p8z4fhUWhP4 | (exercise demo) |
-| Slow squat | P-yaD24bUE8 | (exercise demo) |
-| Reverse lunge | 7pkeQFzJR9g | Buff Dudes |
-| Plank | mwlp75MS6Rg | NASM |
-| Diamond push-up (+ burnout) | kGhDnFwMY3E | (exercise demo) |
-| Prone Y-T-W raise | QdGTI4Lshg4 | (exercise demo) |
-| Superman | z6PJMT2y8GQ | (exercise demo) |
-| Glute bridge | wQQ6N5piDG0 | (NASM trainer demo) |
-| Side plank | 44ND4bOB-T0 | NASM |
+| Push-up (+ burnout) | Lz4VOh4iJdg | Buff Dudes Workouts |
+| Wide push-up | YwFmEsa_lIk | ATHLEAN-X (chest-focused push-up form) |
+| Pike push-up | 2b5t0Cu2nQI | NASM (official) |
+| Towel biceps curl | p8z4fhUWhP4 | J2FIT Strength & Conditioning |
+| Slow squat | P-yaD24bUE8 | Runna |
+| Reverse lunge | 7pkeQFzJR9g | Buff Dudes Workouts |
+| Diamond push-up (+ burnout) | J0DnG1_S92I | ScottHermanFitness |
+| Prone Y-T-W raise | QdGTI4Lshg4 | The Active Life |
+| Superman | z6PJMT2y8GQ | XHIT Daily |
+| Glute bridge | SKOMwg1JLrU | NASM (official) |
+
+**Verifying videos from the sandbox (discovered 2026-07-20d):** youtube.com itself is
+captcha-blocked, but `curl "https://noembed.com/embed?url=https://www.youtube.com/watch?v=<ID>"`
+(a public oEmbed proxy) returns the real title + channel (`author_name`), and a
+successful oEmbed response implies the video allows embedding. ALWAYS verify a video ID
+this way before shipping it — search-result attributions have been wrong (a video billed
+as ScottHermanFitness was actually Upright Health).
 
 ## Dev workflow
 
@@ -212,3 +218,11 @@ There are no tests and no CI — the syntax check and care are the safety net.
   superman 3→2). Plank/side-plank done/order state in `bigGunzDone/OrderV*` goes stale
   (harmless, name-keyed); with a saved vacation order the new cards sort to the END
   until "Reset order" — same known behavior as 2026-07-08. Footer stamp 2026-07-20c.
+- **2026-07-20d** — Better vacation videos (user: "get me better videos… the Howcast one
+  is not great"). Discovered noembed.com oEmbed lookup works from the sandbox (see
+  Videos section) and verified EVERY vacation video's real channel. Swapped 4 IDs (6
+  occurrences incl. burnout reuse): push-up → Buff Dudes Lz4VOh4iJdg (old one was
+  Upright Health, mislabeled by search), wide push-up → ATHLEAN-X YwFmEsa_lIk (was
+  Howcast), diamond push-up → ScottHermanFitness J0DnG1_S92I, glute bridge → official
+  NASM SKOMwg1JLrU. Kept verified-good: NASM pike, Buff Dudes lunge, Runna squat, J2FIT
+  towel curl, The Active Life Y-T-W, XHIT superman. Footer stamp 2026-07-20d.

@@ -252,3 +252,12 @@ getting repetitive. The current program kept everything they liked and filled th
   unverified from sandbox as usual). Watch next check-in: does he finish vacation
   sessions feeling pumped/satisfied, elbow response to towel curls, and reps climbing
   on the push-up variants.
+- **2026-07-20c** — User feedback: wants better videos — called out the Howcast wide
+  push-up clip specifically as "not great". Preference noted: he responds to polished,
+  known-channel tutorials (Buff Dudes / ScottHermanFitness / NASM style), not generic
+  stock demo clips. All vacation videos re-vetted with a new verification method (see
+  APP.md) and 4 swapped: push-up → Buff Dudes, wide push-up → ATHLEAN-X (Jeff
+  Cavaliere, physical-therapist-grade chest push-up breakdown — fits the expert-source
+  trust pattern), diamond push-up → ScottHermanFitness, glute bridge → official NASM.
+  Watch: whether the remaining smaller-channel picks (Runna squat, J2FIT towel curl,
+  Active Life Y-T-W, XHIT superman) pass his quality bar.
